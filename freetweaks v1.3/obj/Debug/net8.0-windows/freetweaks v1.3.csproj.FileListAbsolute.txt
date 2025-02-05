@@ -1,0 +1,20 @@
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\bin\Debug\net8.0-windows\CuoreUI.dll
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.csproj.AssemblyReference.cache
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks_v1._3.panel_core.resources
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks_v1._3.Properties.Resources.resources
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.csproj.GenerateResource.cache
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.AssemblyInfoInputs.cache
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.AssemblyInfo.cs
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.csproj.CoreCompileInputs.cache
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetwea.D4248578.Up2Date
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.3.genruntimeconfig.cache
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\bin\Debug\net8.0-windows\freetweaks v1.4.exe
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\bin\Debug\net8.0-windows\freetweaks v1.4.deps.json
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\bin\Debug\net8.0-windows\freetweaks v1.4.runtimeconfig.json
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\bin\Debug\net8.0-windows\freetweaks v1.4.dll
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\bin\Debug\net8.0-windows\freetweaks v1.4.pdb
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.4.dll
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\refint\freetweaks v1.4.dll
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\freetweaks v1.4.pdb
+C:\Users\crazikk\source\repos\freetweaks v1.3\freetweaks v1.3\obj\Debug\net8.0-windows\ref\freetweaks v1.4.dll

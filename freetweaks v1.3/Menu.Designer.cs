@@ -372,7 +372,7 @@ namespace freetweaks_v1._3
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(139, 11);
             nameLabel.TabIndex = 5;
-            nameLabel.Text = "crazikktweaks free utility v.1.3";
+            nameLabel.Text = "crazikktweaks free utility v.1.4";
             // 
             // button1
             // 
