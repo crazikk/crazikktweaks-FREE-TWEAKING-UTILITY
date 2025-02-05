@@ -153,7 +153,7 @@ namespace freetweaks_v1._3
             isInitializingSettings = true;
             try
             {
-                // ----- Windows toggles -----
+                // ----- Windows toggles (staré už existující) -----
                 diagnosticsBtn.Checked = SystemSettings.IsDiagnosticsEnabled();
                 animationsBtn.Checked = SystemSettings.IsAnimationsEnabled();
                 keyboardBtn.Checked = SystemSettings.IsKeyboardEnabled();
@@ -165,27 +165,42 @@ namespace freetweaks_v1._3
                 gamemodeBtn.Checked = SystemSettings.IsGamemodeEnabled();
                 notificationsBtn.Checked = SystemSettings.IsNotificationSettingsEnabled();
 
-                // ----- CPU toggles -----
+                // ----- CPU toggles (staré už existující) -----
                 timersBtn.Checked = SystemSettings.IsTimersEnabled();
                 cstatesBtn.Checked = SystemSettings.IsCStatesEnabled();
                 eventProcessorBtn.Checked = SystemSettings.IsEventProcessorEnabled();
                 fairShareBtn.Checked = SystemSettings.IsFairShareEnabled();
                 coreParkingBtn.Checked = SystemSettings.IsCoreParkingEnabled();
 
-                // ----- GPU toggles (Nvidia / AMD) -----
+                // ----- GPU toggles (staré už existující) -----
                 energyDriverBtn.Checked = SystemSettings.IsEnergyDriverEnabled();
                 telemetryBtn.Checked = SystemSettings.IsTelemetryEnabled();
                 PreemptionBtn.Checked = SystemSettings.IsPreemptionEnabled();
                 hdcpBtn.Checked = SystemSettings.IsHdcpEnabled();
                 overlayBtn.Checked = SystemSettings.IsOverlayEnabled();
                 ulpsBtn.Checked = SystemSettings.IsUlpsEnabled();
+
+                // ----- NOVÉ TOGGLE: csrssPriorityBtn -----
+                csrssPriorityBtn.Checked = SystemSettings.IsCsrssPriorityEnabled();
+
+                // ----- NOVÉ TOGGLE: cortanaBtn -----
+                cortanaBtn.Checked = SystemSettings.IsCortanaEnabled();
+
+                // ----- NOVÉ TOGGLE: smartScreenBtn -----
+                smartScreenBtn.Checked = SystemSettings.IsSmartScreenEnabled();
+
+                // ----- NOVÉ TOGGLE: windowsInsiderBtn -----
+                windowsInsiderBtn.Checked = SystemSettings.IsWindowsInsiderEnabled();
+
+                // ----- NOVÉ TOGGLE: cuiSwitch2 (Biometrics) -----
+                cuiSwitch2.Checked = SystemSettings.IsBiometricsEnabled();
             }
             finally
             {
                 isInitializingSettings = false;
             }
 
-            // GPU detection
+            // GPU detection (pro staré GPU volby)
             bool isNvidia = SystemSettings.HasNvidiaGpu();
             bool isAmd = SystemSettings.HasAmdGpu();
 
@@ -209,9 +224,6 @@ namespace freetweaks_v1._3
         // ===================================================================
         // =========== Handlers for older Windows toggles ====================
         // ===================================================================
-        /// <summary>
-        /// Handler for the Diagnostics toggle checkbox.
-        /// </summary>
         private void diagnosticsBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -229,9 +241,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Animations toggle checkbox.
-        /// </summary>
         private void animationsBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -249,9 +258,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Keyboard toggle checkbox.
-        /// </summary>
         private void keyboardBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -269,9 +275,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Mouse toggle checkbox.
-        /// </summary>
         private void mouseBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -289,9 +292,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Reporting toggle checkbox.
-        /// </summary>
         private void reportingBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -309,9 +309,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Bluetooth toggle checkbox.
-        /// </summary>
         private void bluetoothBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -329,9 +326,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Background Apps toggle checkbox.
-        /// </summary>
         private void bgappsBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -349,9 +343,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Transparency toggle checkbox.
-        /// </summary>
         private void transparencyBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -369,9 +360,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Game Mode toggle checkbox.
-        /// </summary>
         private void gamemodeBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -389,9 +377,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Notifications toggle checkbox.
-        /// </summary>
         private void notificationsBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -412,9 +397,6 @@ namespace freetweaks_v1._3
         // ===================================================================
         // ============= CPU toggles => CheckedChanged handlers =============
         // ===================================================================
-        /// <summary>
-        /// Handler for the Timers toggle checkbox.
-        /// </summary>
         private void timersBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -432,9 +414,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the C-States toggle checkbox.
-        /// </summary>
         private void cstatesBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -452,9 +431,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the EventProcessor toggle checkbox.
-        /// </summary>
         private void eventProcessorBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -472,9 +448,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the FairShare toggle checkbox.
-        /// </summary>
         private void fairShareBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -492,9 +465,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the CoreParking toggle checkbox.
-        /// </summary>
         private void coreParkingBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -515,9 +485,6 @@ namespace freetweaks_v1._3
         // ===================================================================
         // ===== GPU toggles (Nvidia/AMD) => CheckedChanged handlers =========
         // ===================================================================
-        /// <summary>
-        /// Handler for the Nvidia EnergyDriver toggle checkbox.
-        /// </summary>
         private void energyDriverBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -535,9 +502,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Nvidia Telemetry toggle checkbox.
-        /// </summary>
         private void telemetryBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -555,9 +519,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the Nvidia Preemption toggle checkbox.
-        /// </summary>
         private void PreemptionBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -575,9 +536,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the AMD HDCP toggle checkbox.
-        /// </summary>
         private void hdcpBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -595,9 +553,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the AMD Overlay toggle checkbox.
-        /// </summary>
         private void overlayBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -615,9 +570,6 @@ namespace freetweaks_v1._3
             }
         }
 
-        /// <summary>
-        /// Handler for the AMD ULPS toggle checkbox.
-        /// </summary>
         private void ulpsBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (isInitializingSettings) return;
@@ -634,6 +586,114 @@ namespace freetweaks_v1._3
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // ===================================================================
+        // =========== NOVÉ HANDLERY pro nová tlačítka/přepínače =============
+        // ===================================================================
+
+        /// <summary>
+        /// Handler pro zvýšenou prioritu csrss.exe (CpuPriority + IoPriority).
+        /// </summary>
+        private void csrssPriorityBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = csrssPriorityBtn.Checked;
+            SystemSettings.SetCsrssPriorityEnabled(desiredState);
+            bool actualState = SystemSettings.IsCsrssPriorityEnabled();
+            if (actualState != desiredState)
+            {
+                csrssPriorityBtn.CheckedChanged -= csrssPriorityBtn_CheckedChanged;
+                csrssPriorityBtn.Checked = actualState;
+                csrssPriorityBtn.CheckedChanged += csrssPriorityBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for csrss.exe priority.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handler pro Cortanu (AllowCortana atd.).
+        /// </summary>
+        private void cortanaBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = cortanaBtn.Checked;
+            SystemSettings.SetCortanaEnabled(desiredState);
+            bool actualState = SystemSettings.IsCortanaEnabled();
+            if (actualState != desiredState)
+            {
+                cortanaBtn.CheckedChanged -= cortanaBtn_CheckedChanged;
+                cortanaBtn.Checked = actualState;
+                cortanaBtn.CheckedChanged += cortanaBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Cortana.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handler pro Windows SmartScreen.
+        /// </summary>
+        private void smartScreenBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = smartScreenBtn.Checked;
+            SystemSettings.SetSmartScreenEnabled(desiredState);
+            bool actualState = SystemSettings.IsSmartScreenEnabled();
+            if (actualState != desiredState)
+            {
+                smartScreenBtn.CheckedChanged -= smartScreenBtn_CheckedChanged;
+                smartScreenBtn.Checked = actualState;
+                smartScreenBtn.CheckedChanged += smartScreenBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for SmartScreen.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handler pro Windows Insider (AllowExperimentation).
+        /// </summary>
+        private void windowsInsiderBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = windowsInsiderBtn.Checked;
+            SystemSettings.SetWindowsInsiderEnabled(desiredState);
+            bool actualState = SystemSettings.IsWindowsInsiderEnabled();
+            if (actualState != desiredState)
+            {
+                windowsInsiderBtn.CheckedChanged -= windowsInsiderBtn_CheckedChanged;
+                windowsInsiderBtn.Checked = actualState;
+                windowsInsiderBtn.CheckedChanged += windowsInsiderBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Windows Insider.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handler pro Biometrics (cuiSwitch2).
+        /// </summary>
+        private void cuiSwitch2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = cuiSwitch2.Checked;
+            SystemSettings.SetBiometricsEnabled(desiredState);
+            bool actualState = SystemSettings.IsBiometricsEnabled();
+            if (actualState != desiredState)
+            {
+                cuiSwitch2.CheckedChanged -= cuiSwitch2_CheckedChanged;
+                cuiSwitch2.Checked = actualState;
+                cuiSwitch2.CheckedChanged += cuiSwitch2_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Biometrics.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ===================================================================
+        // ============= Ostatní stávající funkce a tlačítka =================
+        // ===================================================================
 
         /// <summary>
         /// Example placeholder button (cuiButton2) - displays a "Coming soon" message.
