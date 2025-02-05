@@ -52,14 +52,14 @@ namespace freetweaks_v1._3
             windowsPanel = new Panel();
             pageBtn2 = new cuiButton();
             pageBtn1 = new cuiButton();
-            label1 = new Label();
-            cuiSwitch1 = new cuiSwitch();
-            label2 = new Label();
+            smartScreenLabel = new Label();
+            smartScreenBtn = new cuiSwitch();
+            BiometricsLabel = new Label();
             cuiSwitch2 = new cuiSwitch();
-            label3 = new Label();
-            cuiSwitch3 = new cuiSwitch();
-            label4 = new Label();
-            cuiSwitch4 = new cuiSwitch();
+            windowsInsiderLabel = new Label();
+            windowsInsiderBtn = new cuiSwitch();
+            cortanaLabel = new Label();
+            cortanaBtn = new cuiSwitch();
             diagnosticsLabel = new Label();
             diagnosticsBtn = new cuiSwitch();
             animationsLabel = new Label();
@@ -84,11 +84,11 @@ namespace freetweaks_v1._3
             label18 = new Label();
             cuiSwitch13 = new cuiSwitch();
             label9 = new Label();
-            label12 = new Label();
+            csrssPriorityLabel = new Label();
             label13 = new Label();
             label14 = new Label();
             cuiSwitch9 = new cuiSwitch();
-            cuiSwitch10 = new cuiSwitch();
+            csrssPriorityBtn = new cuiSwitch();
             cuiSwitch11 = new cuiSwitch();
             cuiSwitch12 = new cuiSwitch();
             coreParkingLabel = new Label();
@@ -404,14 +404,14 @@ namespace freetweaks_v1._3
             // 
             windowsPanel.Controls.Add(pageBtn2);
             windowsPanel.Controls.Add(pageBtn1);
-            windowsPanel.Controls.Add(label1);
-            windowsPanel.Controls.Add(cuiSwitch1);
-            windowsPanel.Controls.Add(label2);
+            windowsPanel.Controls.Add(smartScreenLabel);
+            windowsPanel.Controls.Add(smartScreenBtn);
+            windowsPanel.Controls.Add(BiometricsLabel);
             windowsPanel.Controls.Add(cuiSwitch2);
-            windowsPanel.Controls.Add(label3);
-            windowsPanel.Controls.Add(cuiSwitch3);
-            windowsPanel.Controls.Add(label4);
-            windowsPanel.Controls.Add(cuiSwitch4);
+            windowsPanel.Controls.Add(windowsInsiderLabel);
+            windowsPanel.Controls.Add(windowsInsiderBtn);
+            windowsPanel.Controls.Add(cortanaLabel);
+            windowsPanel.Controls.Add(cortanaBtn);
             windowsPanel.Controls.Add(diagnosticsLabel);
             windowsPanel.Controls.Add(diagnosticsBtn);
             windowsPanel.Controls.Add(animationsLabel);
@@ -510,47 +510,47 @@ namespace freetweaks_v1._3
             pageBtn1.TabIndex = 37;
             pageBtn1.TextOffset = new Point(0, 0);
             // 
-            // label1
+            // smartScreenLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(370, 286);
-            label1.Name = "label1";
-            label1.Size = new Size(103, 18);
-            label1.TabIndex = 36;
-            label1.Text = "Coming Soon";
+            smartScreenLabel.AutoSize = true;
+            smartScreenLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            smartScreenLabel.ForeColor = Color.White;
+            smartScreenLabel.Location = new Point(370, 286);
+            smartScreenLabel.Name = "smartScreenLabel";
+            smartScreenLabel.Size = new Size(104, 18);
+            smartScreenLabel.TabIndex = 36;
+            smartScreenLabel.Text = "Smart Screen";
             // 
-            // cuiSwitch1
+            // smartScreenBtn
             // 
-            cuiSwitch1.Checked = false;
-            cuiSwitch1.CheckedBackground = Color.Black;
-            cuiSwitch1.CheckedForeground = Color.PowderBlue;
-            cuiSwitch1.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch1.Enabled = false;
-            cuiSwitch1.ForeColor = Color.PowderBlue;
-            cuiSwitch1.Location = new Point(519, 285);
-            cuiSwitch1.Name = "cuiSwitch1";
-            cuiSwitch1.OutlineStyle = true;
-            cuiSwitch1.OutlineThickness = 1F;
-            cuiSwitch1.ShowSymbols = true;
-            cuiSwitch1.Size = new Size(39, 20);
-            cuiSwitch1.TabIndex = 35;
-            cuiSwitch1.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch1.UncheckedBackground = Color.Black;
-            cuiSwitch1.UncheckedForeground = Color.Red;
-            cuiSwitch1.UncheckedOutlineColor = Color.Red;
+            smartScreenBtn.Checked = false;
+            smartScreenBtn.CheckedBackground = Color.Black;
+            smartScreenBtn.CheckedForeground = Color.PowderBlue;
+            smartScreenBtn.CheckedOutlineColor = Color.PowderBlue;
+            smartScreenBtn.ForeColor = Color.PowderBlue;
+            smartScreenBtn.Location = new Point(519, 285);
+            smartScreenBtn.Name = "smartScreenBtn";
+            smartScreenBtn.OutlineStyle = true;
+            smartScreenBtn.OutlineThickness = 1F;
+            smartScreenBtn.ShowSymbols = true;
+            smartScreenBtn.Size = new Size(39, 20);
+            smartScreenBtn.TabIndex = 35;
+            smartScreenBtn.ThumbSizeModifier = new Size(0, 0);
+            smartScreenBtn.UncheckedBackground = Color.Black;
+            smartScreenBtn.UncheckedForeground = Color.Red;
+            smartScreenBtn.UncheckedOutlineColor = Color.Red;
+            smartScreenBtn.CheckedChanged += smartScreenBtn_CheckedChanged;
             // 
-            // label2
+            // BiometricsLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(370, 331);
-            label2.Name = "label2";
-            label2.Size = new Size(103, 18);
-            label2.TabIndex = 34;
-            label2.Text = "Coming Soon";
+            BiometricsLabel.AutoSize = true;
+            BiometricsLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BiometricsLabel.ForeColor = Color.White;
+            BiometricsLabel.Location = new Point(370, 331);
+            BiometricsLabel.Name = "BiometricsLabel";
+            BiometricsLabel.Size = new Size(84, 18);
+            BiometricsLabel.TabIndex = 34;
+            BiometricsLabel.Text = "Biometrics";
             // 
             // cuiSwitch2
             // 
@@ -558,7 +558,6 @@ namespace freetweaks_v1._3
             cuiSwitch2.CheckedBackground = Color.Black;
             cuiSwitch2.CheckedForeground = Color.PowderBlue;
             cuiSwitch2.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch2.Enabled = false;
             cuiSwitch2.ForeColor = Color.PowderBlue;
             cuiSwitch2.Location = new Point(519, 328);
             cuiSwitch2.Name = "cuiSwitch2";
@@ -571,68 +570,69 @@ namespace freetweaks_v1._3
             cuiSwitch2.UncheckedBackground = Color.Black;
             cuiSwitch2.UncheckedForeground = Color.Red;
             cuiSwitch2.UncheckedOutlineColor = Color.Red;
+            cuiSwitch2.CheckedChanged += cuiSwitch2_CheckedChanged;
             // 
-            // label3
+            // windowsInsiderLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(23, 329);
-            label3.Name = "label3";
-            label3.Size = new Size(103, 18);
-            label3.TabIndex = 32;
-            label3.Text = "Coming Soon";
+            windowsInsiderLabel.AutoSize = true;
+            windowsInsiderLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            windowsInsiderLabel.ForeColor = Color.White;
+            windowsInsiderLabel.Location = new Point(23, 329);
+            windowsInsiderLabel.Name = "windowsInsiderLabel";
+            windowsInsiderLabel.Size = new Size(124, 18);
+            windowsInsiderLabel.TabIndex = 32;
+            windowsInsiderLabel.Text = "Windows Insider";
             // 
-            // cuiSwitch3
+            // windowsInsiderBtn
             // 
-            cuiSwitch3.Checked = false;
-            cuiSwitch3.CheckedBackground = Color.Black;
-            cuiSwitch3.CheckedForeground = Color.PowderBlue;
-            cuiSwitch3.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch3.Enabled = false;
-            cuiSwitch3.ForeColor = Color.PowderBlue;
-            cuiSwitch3.Location = new Point(172, 329);
-            cuiSwitch3.Name = "cuiSwitch3";
-            cuiSwitch3.OutlineStyle = true;
-            cuiSwitch3.OutlineThickness = 1F;
-            cuiSwitch3.ShowSymbols = true;
-            cuiSwitch3.Size = new Size(39, 20);
-            cuiSwitch3.TabIndex = 31;
-            cuiSwitch3.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch3.UncheckedBackground = Color.Black;
-            cuiSwitch3.UncheckedForeground = Color.Red;
-            cuiSwitch3.UncheckedOutlineColor = Color.Red;
+            windowsInsiderBtn.Checked = false;
+            windowsInsiderBtn.CheckedBackground = Color.Black;
+            windowsInsiderBtn.CheckedForeground = Color.PowderBlue;
+            windowsInsiderBtn.CheckedOutlineColor = Color.PowderBlue;
+            windowsInsiderBtn.ForeColor = Color.PowderBlue;
+            windowsInsiderBtn.Location = new Point(172, 329);
+            windowsInsiderBtn.Name = "windowsInsiderBtn";
+            windowsInsiderBtn.OutlineStyle = true;
+            windowsInsiderBtn.OutlineThickness = 1F;
+            windowsInsiderBtn.ShowSymbols = true;
+            windowsInsiderBtn.Size = new Size(39, 20);
+            windowsInsiderBtn.TabIndex = 31;
+            windowsInsiderBtn.ThumbSizeModifier = new Size(0, 0);
+            windowsInsiderBtn.UncheckedBackground = Color.Black;
+            windowsInsiderBtn.UncheckedForeground = Color.Red;
+            windowsInsiderBtn.UncheckedOutlineColor = Color.Red;
+            windowsInsiderBtn.CheckedChanged += windowsInsiderBtn_CheckedChanged;
             // 
-            // label4
+            // cortanaLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(23, 286);
-            label4.Name = "label4";
-            label4.Size = new Size(103, 18);
-            label4.TabIndex = 30;
-            label4.Text = "Coming Soon";
+            cortanaLabel.AutoSize = true;
+            cortanaLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cortanaLabel.ForeColor = Color.White;
+            cortanaLabel.Location = new Point(23, 286);
+            cortanaLabel.Name = "cortanaLabel";
+            cortanaLabel.Size = new Size(64, 18);
+            cortanaLabel.TabIndex = 30;
+            cortanaLabel.Text = "Cortana";
             // 
-            // cuiSwitch4
+            // cortanaBtn
             // 
-            cuiSwitch4.Checked = false;
-            cuiSwitch4.CheckedBackground = Color.Black;
-            cuiSwitch4.CheckedForeground = Color.PowderBlue;
-            cuiSwitch4.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch4.Enabled = false;
-            cuiSwitch4.ForeColor = Color.PowderBlue;
-            cuiSwitch4.Location = new Point(172, 285);
-            cuiSwitch4.Name = "cuiSwitch4";
-            cuiSwitch4.OutlineStyle = true;
-            cuiSwitch4.OutlineThickness = 1F;
-            cuiSwitch4.ShowSymbols = true;
-            cuiSwitch4.Size = new Size(39, 20);
-            cuiSwitch4.TabIndex = 29;
-            cuiSwitch4.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch4.UncheckedBackground = Color.Black;
-            cuiSwitch4.UncheckedForeground = Color.Red;
-            cuiSwitch4.UncheckedOutlineColor = Color.Red;
+            cortanaBtn.Checked = false;
+            cortanaBtn.CheckedBackground = Color.Black;
+            cortanaBtn.CheckedForeground = Color.PowderBlue;
+            cortanaBtn.CheckedOutlineColor = Color.PowderBlue;
+            cortanaBtn.ForeColor = Color.PowderBlue;
+            cortanaBtn.Location = new Point(172, 285);
+            cortanaBtn.Name = "cortanaBtn";
+            cortanaBtn.OutlineStyle = true;
+            cortanaBtn.OutlineThickness = 1F;
+            cortanaBtn.ShowSymbols = true;
+            cortanaBtn.Size = new Size(39, 20);
+            cortanaBtn.TabIndex = 29;
+            cortanaBtn.ThumbSizeModifier = new Size(0, 0);
+            cortanaBtn.UncheckedBackground = Color.Black;
+            cortanaBtn.UncheckedForeground = Color.Red;
+            cortanaBtn.UncheckedOutlineColor = Color.Red;
+            cortanaBtn.CheckedChanged += cortanaBtn_CheckedChanged;
             // 
             // diagnosticsLabel
             // 
@@ -948,11 +948,11 @@ namespace freetweaks_v1._3
             cpuPanel.Controls.Add(label18);
             cpuPanel.Controls.Add(cuiSwitch13);
             cpuPanel.Controls.Add(label9);
-            cpuPanel.Controls.Add(label12);
+            cpuPanel.Controls.Add(csrssPriorityLabel);
             cpuPanel.Controls.Add(label13);
             cpuPanel.Controls.Add(label14);
             cpuPanel.Controls.Add(cuiSwitch9);
-            cpuPanel.Controls.Add(cuiSwitch10);
+            cpuPanel.Controls.Add(csrssPriorityBtn);
             cpuPanel.Controls.Add(cuiSwitch11);
             cpuPanel.Controls.Add(cuiSwitch12);
             cpuPanel.Controls.Add(coreParkingLabel);
@@ -1013,16 +1013,16 @@ namespace freetweaks_v1._3
             label9.TabIndex = 54;
             label9.Text = "Coming Soon";
             // 
-            // label12
+            // csrssPriorityLabel
             // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(369, 167);
-            label12.Name = "label12";
-            label12.Size = new Size(103, 18);
-            label12.TabIndex = 53;
-            label12.Text = "Coming Soon";
+            csrssPriorityLabel.AutoSize = true;
+            csrssPriorityLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            csrssPriorityLabel.ForeColor = Color.White;
+            csrssPriorityLabel.Location = new Point(369, 167);
+            csrssPriorityLabel.Name = "csrssPriorityLabel";
+            csrssPriorityLabel.Size = new Size(115, 18);
+            csrssPriorityLabel.TabIndex = 53;
+            csrssPriorityLabel.Text = "CSRSS Priority";
             // 
             // label13
             // 
@@ -1066,25 +1066,25 @@ namespace freetweaks_v1._3
             cuiSwitch9.UncheckedForeground = Color.Red;
             cuiSwitch9.UncheckedOutlineColor = Color.Red;
             // 
-            // cuiSwitch10
+            // csrssPriorityBtn
             // 
-            cuiSwitch10.Checked = false;
-            cuiSwitch10.CheckedBackground = Color.Black;
-            cuiSwitch10.CheckedForeground = Color.PowderBlue;
-            cuiSwitch10.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch10.Enabled = false;
-            cuiSwitch10.ForeColor = Color.PowderBlue;
-            cuiSwitch10.Location = new Point(519, 166);
-            cuiSwitch10.Name = "cuiSwitch10";
-            cuiSwitch10.OutlineStyle = true;
-            cuiSwitch10.OutlineThickness = 1F;
-            cuiSwitch10.ShowSymbols = true;
-            cuiSwitch10.Size = new Size(39, 20);
-            cuiSwitch10.TabIndex = 49;
-            cuiSwitch10.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch10.UncheckedBackground = Color.Black;
-            cuiSwitch10.UncheckedForeground = Color.Red;
-            cuiSwitch10.UncheckedOutlineColor = Color.Red;
+            csrssPriorityBtn.Checked = false;
+            csrssPriorityBtn.CheckedBackground = Color.Black;
+            csrssPriorityBtn.CheckedForeground = Color.PowderBlue;
+            csrssPriorityBtn.CheckedOutlineColor = Color.PowderBlue;
+            csrssPriorityBtn.Enabled = false;
+            csrssPriorityBtn.ForeColor = Color.PowderBlue;
+            csrssPriorityBtn.Location = new Point(519, 166);
+            csrssPriorityBtn.Name = "csrssPriorityBtn";
+            csrssPriorityBtn.OutlineStyle = true;
+            csrssPriorityBtn.OutlineThickness = 1F;
+            csrssPriorityBtn.ShowSymbols = true;
+            csrssPriorityBtn.Size = new Size(39, 20);
+            csrssPriorityBtn.TabIndex = 49;
+            csrssPriorityBtn.ThumbSizeModifier = new Size(0, 0);
+            csrssPriorityBtn.UncheckedBackground = Color.Black;
+            csrssPriorityBtn.UncheckedForeground = Color.Red;
+            csrssPriorityBtn.UncheckedOutlineColor = Color.Red;
             // 
             // cuiSwitch11
             // 
@@ -1734,9 +1734,9 @@ namespace freetweaks_v1._3
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(800, 450);
-            Controls.Add(gpuPanel);
-            Controls.Add(cpuPanel);
             Controls.Add(windowsPanel);
+            Controls.Add(cpuPanel);
+            Controls.Add(gpuPanel);
             Controls.Add(button1);
             Controls.Add(nameLabel);
             Controls.Add(HomeLabel);
@@ -1791,14 +1791,14 @@ namespace freetweaks_v1._3
         private Label bgappsLabel;
         private CuoreUI.Controls.cuiSwitch bgappsBtn;
         private Label diagnosticsLabel;
-        private Label label1;
-        private CuoreUI.Controls.cuiSwitch cuiSwitch1;
-        private Label label2;
+        private Label smartScreenLabel;
+        private CuoreUI.Controls.cuiSwitch smartScreenBtn;
+        private Label BiometricsLabel;
         private CuoreUI.Controls.cuiSwitch cuiSwitch2;
-        private Label label3;
-        private CuoreUI.Controls.cuiSwitch cuiSwitch3;
-        private Label label4;
-        private CuoreUI.Controls.cuiSwitch cuiSwitch4;
+        private Label windowsInsiderLabel;
+        private CuoreUI.Controls.cuiSwitch windowsInsiderBtn;
+        private Label cortanaLabel;
+        private CuoreUI.Controls.cuiSwitch cortanaBtn;
         private Label ulpsLabel;
         private CuoreUI.Controls.cuiSwitch ulpsBtn;
         private Label overlayLabel;
@@ -1846,11 +1846,11 @@ namespace freetweaks_v1._3
         private Label label18;
         private cuiSwitch cuiSwitch13;
         private Label label9;
-        private Label label12;
+        private Label csrssPriorityLabel;
         private Label label13;
         private Label label14;
         private cuiSwitch cuiSwitch9;
-        private cuiSwitch cuiSwitch10;
+        private cuiSwitch csrssPriorityBtn;
         private cuiSwitch cuiSwitch11;
         private cuiSwitch cuiSwitch12;
         private Label label7;

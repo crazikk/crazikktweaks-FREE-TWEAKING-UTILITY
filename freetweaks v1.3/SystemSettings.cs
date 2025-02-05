@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Principal; // pro práci s SID
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -240,9 +241,6 @@ namespace freetweaks_v1._3
         private static readonly string DiagTrackRegPath = @"SYSTEM\CurrentControlSet\Services\DiagTrack";
         private static readonly string DmwappushRegPath = @"SYSTEM\CurrentControlSet\Services\dmwappushservice";
 
-        /// <summary>
-        /// Diagnostics considered enabled if either DiagTrack or dmwappushservice is not disabled (Start != 4).
-        /// </summary>
         public static bool IsDiagnosticsEnabled()
         {
             bool diagOn = IsServiceEnabled(DiagTrackRegPath);
@@ -250,9 +248,6 @@ namespace freetweaks_v1._3
             return (diagOn || dmwappushOn);
         }
 
-        /// <summary>
-        /// Enables or disables Diagnostics by setting services Start=3 (Manual) or 4 (Disabled).
-        /// </summary>
         public static void SetDiagnosticsEnabled(bool enabled)
         {
             int sv = enabled ? 3 : 4; // 3=Manual, 4=Disabled
@@ -305,9 +300,6 @@ namespace freetweaks_v1._3
             }
         };
 
-        /// <summary>
-        /// Checks if animations are enabled by verifying all relevant registry settings match their "enabled" values.
-        /// </summary>
         public static bool IsAnimationsEnabled()
         {
             foreach (var setting in AnimationsSettings)
@@ -325,9 +317,6 @@ namespace freetweaks_v1._3
             return true;
         }
 
-        /// <summary>
-        /// Enables or disables animations by writing the respective registry values.
-        /// </summary>
         public static void SetAnimationsEnabled(bool enabled)
         {
             foreach (var setting in AnimationsSettings)
@@ -347,9 +336,6 @@ namespace freetweaks_v1._3
         private const int KeyboardDataQueueSizeEnabled = 40;
         private const int KeyboardDataQueueSizeDisabled = 100;
 
-        /// <summary>
-        /// Checks if the keyboard is "enabled" by comparing a specific registry value to a known integer.
-        /// </summary>
         public static bool IsKeyboardEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.LocalMachine,
@@ -363,9 +349,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables keyboard tweaks by setting the KeyboardDataQueueSize (40 or 100).
-        /// </summary>
         public static void SetKeyboardEnabled(bool enabled)
         {
             int v = enabled ? KeyboardDataQueueSizeEnabled : KeyboardDataQueueSizeDisabled;
@@ -382,9 +365,6 @@ namespace freetweaks_v1._3
         private const int MouseDataQueueSizeEnabled = 45;
         private const int MouseDataQueueSizeDisabled = 100;
 
-        /// <summary>
-        /// Checks if the mouse is "enabled" by comparing a registry value to a known integer.
-        /// </summary>
         public static bool IsMouseEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.LocalMachine,
@@ -398,9 +378,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables mouse tweaks by setting the MouseDataQueueSize (45 or 100).
-        /// </summary>
         public static void SetMouseEnabled(bool enabled)
         {
             int v = enabled ? MouseDataQueueSizeEnabled : MouseDataQueueSizeDisabled;
@@ -416,18 +393,12 @@ namespace freetweaks_v1._3
         private static readonly string WERPolicyPath2 = @"SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting";
         private static readonly string WERNonPolicyPath = @"SOFTWARE\Microsoft\Windows\Windows Error Reporting";
 
-        /// <summary>
-        /// Determines whether error reporting is enabled by checking "Disabled" in WER policy.
-        /// </summary>
         public static bool IsReportingEnabled()
         {
             TryReadRegistryValue<int>(RegistryHive.LocalMachine, WERPolicyPath, "Disabled", out int disabledVal, 0);
             return (disabledVal == 0);
         }
 
-        /// <summary>
-        /// Enables or disables Windows Error Reporting in various registry locations (WERPolicyPath, WERPolicyPath2, etc.).
-        /// </summary>
         public static void SetReportingEnabled(bool enabled)
         {
             int valDisabled = enabled ? 0 : 1;
@@ -451,9 +422,6 @@ namespace freetweaks_v1._3
             @"SYSTEM\ControlSet001\Services\BluetoothUserService"
         };
 
-        /// <summary>
-        /// Checks if Bluetooth is enabled by verifying at least one related service is not disabled.
-        /// </summary>
         public static bool IsBluetoothEnabled()
         {
             foreach (var svcPath in BluetoothServices)
@@ -463,9 +431,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables Bluetooth services (BTAGService, bthserv, BthAvctpSvc, BluetoothUserService).
-        /// </summary>
         public static void SetBluetoothEnabled(bool enabled)
         {
             int startVal = enabled ? 3 : 4; // 3=Manual, 4=Disabled
@@ -479,9 +444,6 @@ namespace freetweaks_v1._3
         private static readonly string BamServicePath = @"SYSTEM\CurrentControlSet\Services\bam";
         private static readonly string DamServicePath = @"SYSTEM\CurrentControlSet\Services\dam";
 
-        /// <summary>
-        /// Checks if background apps are enabled if either bam/dam is not disabled.
-        /// </summary>
         public static bool IsBgappsEnabled()
         {
             bool bamOn = IsServiceEnabled(BamServicePath);
@@ -489,12 +451,9 @@ namespace freetweaks_v1._3
             return (bamOn || damOn);
         }
 
-        /// <summary>
-        /// Enables or disables background apps by changing bam/dam service start types.
-        /// </summary>
         public static void SetBgappsEnabled(bool enabled)
         {
-            int sv = enabled ? 3 : 4; // 3=Manual, 4=Disabled
+            int sv = enabled ? 3 : 4;
             SetServiceStart(BamServicePath, sv);
             SetServiceStart(DamServicePath, sv);
         }
@@ -503,9 +462,6 @@ namespace freetweaks_v1._3
         private const string TransparencyRegistryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string TransparencyValueName = "EnableTransparency";
 
-        /// <summary>
-        /// Checks if transparency is enabled by reading "EnableTransparency" (1 = enabled).
-        /// </summary>
         public static bool IsTransparencyEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.CurrentUser, TransparencyRegistryPath, TransparencyValueName, out int val, 1))
@@ -515,9 +471,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables transparency by writing 1 or 0 to "EnableTransparency".
-        /// </summary>
         public static void SetTransparencyEnabled(bool enabled)
         {
             WriteRegistryValue(RegistryHive.CurrentUser,
@@ -530,9 +483,6 @@ namespace freetweaks_v1._3
         // 9) Game Mode
         private const string GameBarPath = @"SOFTWARE\Microsoft\GameBar";
 
-        /// <summary>
-        /// Checks if Game Mode is enabled (AllowAutoGameMode=1).
-        /// </summary>
         public static bool IsGamemodeEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.CurrentUser, GameBarPath, "AllowAutoGameMode", out int val, 0))
@@ -542,9 +492,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables Game Mode by setting "AllowAutoGameMode" and "AutoGameModeEnabled" in GameBarPath.
-        /// </summary>
         public static void SetGamemodeEnabled(bool enabled)
         {
             int v = enabled ? 1 : 0;
@@ -587,9 +534,6 @@ namespace freetweaks_v1._3
             }
         };
 
-        /// <summary>
-        /// Checks if notification settings are enabled by verifying each relevant registry setting.
-        /// </summary>
         public static bool IsNotificationSettingsEnabled()
         {
             foreach (var setting in NotificationSettings)
@@ -623,9 +567,6 @@ namespace freetweaks_v1._3
             return true;
         }
 
-        /// <summary>
-        /// Enables or disables notification settings by writing enabled or disabled values to each registry setting.
-        /// </summary>
         public static void SetNotificationSettingsEnabled(bool enabled)
         {
             foreach (var setting in NotificationSettings)
@@ -643,9 +584,6 @@ namespace freetweaks_v1._3
         private const string TimersRegistryPath = @"SYSTEM\CurrentControlSet\Control\Session Manager\kernel";
         private const string TimersValueName = "DistributeTimers";
 
-        /// <summary>
-        /// Timers are considered enabled if "DistributeTimers"=0, disabled if =1.
-        /// </summary>
         public static bool IsTimersEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, TimersRegistryPath, TimersValueName, out int val, 0))
@@ -655,9 +593,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables timers by setting "DistributeTimers" to 0 or 1.
-        /// </summary>
         public static void SetTimersEnabled(bool enabled)
         {
             int v = enabled ? 0 : 1;
@@ -710,9 +645,6 @@ namespace freetweaks_v1._3
             }
         };
 
-        /// <summary>
-        /// Checks if C-States are enabled by verifying multiple registry entries are set to their "enabled" values.
-        /// </summary>
         public static bool IsCStatesEnabled()
         {
             foreach (var setting in CStatesSettings)
@@ -731,9 +663,6 @@ namespace freetweaks_v1._3
             return true;
         }
 
-        /// <summary>
-        /// Enables or disables C-States by writing values to power settings (e.g. AwayModeEnabled, AllowStandby, etc.).
-        /// </summary>
         public static void SetCStatesEnabled(bool enabled)
         {
             foreach (var setting in CStatesSettings)
@@ -751,9 +680,6 @@ namespace freetweaks_v1._3
         private const string EventProcessorRegistryPath = @"SYSTEM\CurrentControlSet\Control\Power";
         private const string EventProcessorValueName = "EventProcessorEnabled";
 
-        /// <summary>
-        /// Checks if EventProcessor is enabled by reading "EventProcessorEnabled"=1.
-        /// </summary>
         public static bool IsEventProcessorEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, EventProcessorRegistryPath, EventProcessorValueName, out int val, 1))
@@ -763,9 +689,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables EventProcessor by writing 1 or 0 to "EventProcessorEnabled".
-        /// </summary>
         public static void SetEventProcessorEnabled(bool enabled)
         {
             int v = enabled ? 1 : 0;
@@ -776,9 +699,6 @@ namespace freetweaks_v1._3
         private const string FairShareRegistryPath = @"SYSTEM\CurrentControlSet\Control\Session Manager\Quota System";
         private const string FairShareValueName = "EnableCpuQuota";
 
-        /// <summary>
-        /// Checks if FairShare is enabled by verifying "EnableCpuQuota"=1 in the Quota System.
-        /// </summary>
         public static bool IsFairShareEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, FairShareRegistryPath, FairShareValueName, out int val, 1))
@@ -788,9 +708,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables FairShare by writing 1 or 0 to "EnableCpuQuota".
-        /// </summary>
         public static void SetFairShareEnabled(bool enabled)
         {
             int v = enabled ? 1 : 0;
@@ -801,9 +718,6 @@ namespace freetweaks_v1._3
         private const string CoreParkingRegistryPath = @"SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583";
         private const string CoreParkingValueName = "ValueMin";
 
-        /// <summary>
-        /// Checks if core parking is enabled by verifying "ValueMin"=0 (meaning no parking).
-        /// </summary>
         public static bool IsCoreParkingEnabled()
         {
             if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, CoreParkingRegistryPath, CoreParkingValueName, out int val, 0))
@@ -813,9 +727,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables core parking by setting "ValueMin"=0 or 100 in power settings.
-        /// </summary>
         public static void SetCoreParkingEnabled(bool enabled)
         {
             int v = enabled ? 0 : 100;
@@ -830,20 +741,13 @@ namespace freetweaks_v1._3
         private static readonly string GpuEnergyDrvPath = @"SYSTEM\CurrentControlSet\Services\GpuEnergyDrv";
         private static readonly string GpuEnergyDrPath = @"SYSTEM\CurrentControlSet\Services\GpuEnergyDr";
 
-        /// <summary>
-        /// Checks if the GPU energy driver is enabled by verifying neither GpuEnergyDrv nor GpuEnergyDr is set to start=4.
-        /// </summary>
         public static bool IsEnergyDriverEnabled()
         {
-            // If either is "Start != 4" => consider it enabled.
             bool drv1 = IsServiceEnabled(GpuEnergyDrvPath);
             bool drv2 = IsServiceEnabled(GpuEnergyDrPath);
             return (drv1 || drv2);
         }
 
-        /// <summary>
-        /// Enables or disables GPU energy driver by setting Start=2 (Automatic) or 4 (Disabled) for both GpuEnergyDrv and GpuEnergyDr.
-        /// </summary>
         public static void SetEnergyDriverEnabled(bool enabled)
         {
             int startVal = enabled ? 2 : 4; // 2=Automatic, 4=Disabled
@@ -854,7 +758,6 @@ namespace freetweaks_v1._3
         // B) telemetryBtn
         private const string NvRunKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
         private const string NvRunValueName = "NvBackend";
-        // Default path for Nvidia backend process
         private const string NvBackendDefaultPath = "\"C:\\Program Files (x86)\\NVIDIA Corporation\\Update Core\\NvBackend.exe\" /start";
 
         private static readonly List<RegistrySetting> TelemetryRidSettings = new List<RegistrySetting>
@@ -891,23 +794,17 @@ namespace freetweaks_v1._3
             }
         };
 
-        /// <summary>
-        /// Checks if Nvidia telemetry is enabled by verifying the presence of "NvBackend" in Run,
-        /// and the relevant "EnableRIDxxx" registry entries set to 1.
-        /// </summary>
         public static bool IsTelemetryEnabled()
         {
             // 1) Check if "NvBackend" is in RUN
             using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (RegistryKey runKey = baseKey.OpenSubKey(NvRunKeyPath, false))
             {
-                using (RegistryKey runKey = baseKey.OpenSubKey(NvRunKeyPath, false))
-                {
-                    if (runKey?.GetValue(NvRunValueName) == null)
-                        return false;
-                }
+                if (runKey?.GetValue(NvRunValueName) == null)
+                    return false;
             }
 
-            // 2) Check the "EnableRIDxxx" (must be all 1 for enabled)
+            // 2) Check the "EnableRIDxxx" (all must be 1)
             foreach (var setting in TelemetryRidSettings)
             {
                 object curVal = ReadRegistryValue(setting.Hive,
@@ -924,31 +821,21 @@ namespace freetweaks_v1._3
             return true;
         }
 
-        /// <summary>
-        /// Enables or disables Nvidia Telemetry.
-        /// If disabled, it removes "NvBackend" from Run; if enabled, it adds it back.
-        /// Also writes 0 or 1 to EnableRIDxxxx in HKLM\SOFTWARE\NVIDIA Corporation\Global\FTS.
-        /// </summary>
         public static void SetTelemetryEnabled(bool enabled)
         {
             // 1) Toggle "NvBackend" in RUN
             using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (RegistryKey runKey = baseKey.OpenSubKey(NvRunKeyPath, writable: true))
             {
-                using (RegistryKey runKey = baseKey.OpenSubKey(NvRunKeyPath, writable: true))
+                if (runKey != null)
                 {
-                    if (runKey != null)
+                    if (!enabled)
                     {
-                        if (!enabled)
-                        {
-                            // Remove
-                            try { runKey.DeleteValue(NvRunValueName); }
-                            catch { /* if doesn't exist, ignore */ }
-                        }
-                        else
-                        {
-                            // Create with default path
-                            runKey.SetValue(NvRunValueName, NvBackendDefaultPath, RegistryValueKind.String);
-                        }
+                        try { runKey.DeleteValue(NvRunValueName); } catch { }
+                    }
+                    else
+                    {
+                        runKey.SetValue(NvRunValueName, NvBackendDefaultPath, RegistryValueKind.String);
                     }
                 }
             }
@@ -969,7 +856,6 @@ namespace freetweaks_v1._3
         private const string NvidiaClass0000 = @"SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000";
         private const string NvlddmkmPath = @"SYSTEM\CurrentControlSet\Services\nvlddmkm";
 
-        // If Preemption is "disabled", we create the following keys/values.
         private static readonly Dictionary<string, object> PreemptionDisabledValues_Class0000 = new Dictionary<string, object>
         {
             { "DisableCudaContextPreemption", 1 },
@@ -983,10 +869,6 @@ namespace freetweaks_v1._3
             { "DisableCudaContextPreemption", 1 }
         };
 
-        /// <summary>
-        /// Checks if preemption is enabled (i.e., these "disabled" keys do not exist).
-        /// If any of these keys match the "disabled" value, we consider it disabled.
-        /// </summary>
         public static bool IsPreemptionEnabled()
         {
             // Check NvidiaClass0000
@@ -1026,9 +908,6 @@ namespace freetweaks_v1._3
             return true;
         }
 
-        /// <summary>
-        /// Sets preemption to enabled (removing registry keys) or disabled (creating those keys).
-        /// </summary>
         public static void SetPreemptionEnabled(bool enabled)
         {
             if (enabled)
@@ -1048,10 +927,7 @@ namespace freetweaks_v1._3
                                     if (classKey.GetValue(kvp.Key) != null)
                                         classKey.DeleteValue(kvp.Key);
                                 }
-                                catch
-                                {
-                                    // ignore
-                                }
+                                catch { }
                             }
                         }
                     }
@@ -1068,10 +944,7 @@ namespace freetweaks_v1._3
                                     if (nvKey.GetValue(kvp.Key) != null)
                                         nvKey.DeleteValue(kvp.Key);
                                 }
-                                catch
-                                {
-                                    // ignore
-                                }
+                                catch { }
                             }
                         }
                     }
@@ -1116,9 +989,6 @@ namespace freetweaks_v1._3
         private static readonly byte[] HdcpDisabledBytes = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00 };
         private static readonly byte[] HdcpEnabledBytes = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-        /// <summary>
-        /// Checks if HDCP is enabled by comparing the registry binary value with the known "enabled" bytes.
-        /// </summary>
         public static bool IsHdcpEnabled()
         {
             object raw = ReadRegistryValue(RegistryHive.LocalMachine,
@@ -1133,9 +1003,6 @@ namespace freetweaks_v1._3
             return false;
         }
 
-        /// <summary>
-        /// Enables or disables HDCP by writing specific binary data to "ProtectionControl".
-        /// </summary>
         public static void SetHdcpEnabled(bool enabled)
         {
             var data = enabled ? HdcpEnabledBytes : HdcpDisabledBytes;
@@ -1146,9 +1013,6 @@ namespace freetweaks_v1._3
                                RegistryValueKind.Binary);
         }
 
-        /// <summary>
-        /// Helper to compare two byte arrays for equality.
-        /// </summary>
         private static bool CompareByteArrays(byte[] a, byte[] b)
         {
             if (a == null || b == null) return false;
@@ -1164,9 +1028,6 @@ namespace freetweaks_v1._3
         private const string OverlayRegistryPath = @"SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000";
         private const string OverlayValueName = "AllowRSOverlay";
 
-        /// <summary>
-        /// Checks if AMD overlay is enabled ("AllowRSOverlay"="true").
-        /// </summary>
         public static bool IsOverlayEnabled()
         {
             object val = ReadRegistryValue(RegistryHive.LocalMachine,
@@ -1177,9 +1038,6 @@ namespace freetweaks_v1._3
             return (val is string s && s.Equals("true", StringComparison.OrdinalIgnoreCase));
         }
 
-        /// <summary>
-        /// Enables or disables AMD overlay by setting "AllowRSOverlay" to "true" or "false".
-        /// </summary>
         public static void SetOverlayEnabled(bool enabled)
         {
             string v = enabled ? "true" : "false";
@@ -1195,9 +1053,6 @@ namespace freetweaks_v1._3
         private const string UlpsValueName = "EnablingUlps";
         private const string UlpsNaValueName = "EnablingUlps_NA";
 
-        /// <summary>
-        /// Checks if AMD ULPS is enabled (EnablingUlps=1 and EnablingUlps_NA="1").
-        /// </summary>
         public static bool IsUlpsEnabled()
         {
             bool isUlpsOn = false;
@@ -1221,9 +1076,6 @@ namespace freetweaks_v1._3
             return (isUlpsOn && isUlpsNaOn);
         }
 
-        /// <summary>
-        /// Enables or disables AMD ULPS by setting EnablingUlps=1 or 0, and EnablingUlps_NA="1" or "0".
-        /// </summary>
         public static void SetUlpsEnabled(bool enabled)
         {
             int ulpsVal = enabled ? 1 : 0;
@@ -1239,6 +1091,269 @@ namespace freetweaks_v1._3
                                UlpsNaValueName,
                                ulpsNaVal,
                                RegistryValueKind.String);
+        }
+
+
+        // -------------------------------------------------------------------
+        // ============ NOVÉ METODY PRO VAŠE DODATEČNÉ FUNKCE ================
+        // -------------------------------------------------------------------
+
+        // A) csrssPriorityBtn (CpuPriorityClass, IoPriority)
+        private const string CsrssPerfOptionsPath =
+            @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions";
+
+        // ENABLED => CpuPriorityClass=4, IoPriority=3
+        // DISABLED => CpuPriorityClass=3, IoPriority=2
+        public static bool IsCsrssPriorityEnabled()
+        {
+            bool ok1 = TryReadRegistryValue<int>(RegistryHive.LocalMachine,
+                CsrssPerfOptionsPath, "CpuPriorityClass", out int cpuPriority, 3);
+            bool ok2 = TryReadRegistryValue<int>(RegistryHive.LocalMachine,
+                CsrssPerfOptionsPath, "IoPriority", out int ioPriority, 2);
+
+            if (!ok1 || !ok2) return false;
+
+            // Podle požadavku: 4 a 3 => Enabled, 3 a 2 => Disabled
+            return (cpuPriority == 4 && ioPriority == 3);
+        }
+
+        public static void SetCsrssPriorityEnabled(bool enabled)
+        {
+            int cpuVal = enabled ? 4 : 3;
+            int ioVal = enabled ? 3 : 2;
+
+            WriteRegistryValue(RegistryHive.LocalMachine,
+                CsrssPerfOptionsPath, "CpuPriorityClass", cpuVal, RegistryValueKind.DWord);
+            WriteRegistryValue(RegistryHive.LocalMachine,
+                CsrssPerfOptionsPath, "IoPriority", ioVal, RegistryValueKind.DWord);
+        }
+
+        // B) cortanaBtn
+        // HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search => sedm DWORD hodnot (AllowCortana, AllowCloudSearch, ...)
+        private static readonly List<RegistrySetting> CortanaSettings = new List<RegistrySetting>
+        {
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "AllowCortana",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 1,
+                ValueKind = RegistryValueKind.DWord
+            },
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "AllowCloudSearch",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 1,
+                ValueKind = RegistryValueKind.DWord
+            },
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "AllowCortanaAboveLock",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 1,
+                ValueKind = RegistryValueKind.DWord
+            },
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "AllowSearchToUseLocation",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 1,
+                ValueKind = RegistryValueKind.DWord
+            },
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "ConnectedSearchUseWeb",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 1,
+                ValueKind = RegistryValueKind.DWord
+            },
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "ConnectedSearchUseWebOverMeteredConnections",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 1,
+                ValueKind = RegistryValueKind.DWord
+            },
+            new RegistrySetting
+            {
+                Hive = RegistryHive.LocalMachine,
+                RegistryPath = @"SOFTWARE\Policies\Microsoft\Windows\Windows Search",
+                ValueName = "DisableWebSearch",
+                DisabledValue = 0,
+                EnabledValue = 1,
+                DefaultValue = 0,
+                ValueKind = RegistryValueKind.DWord
+            },
+        };
+
+        public static bool IsCortanaEnabled()
+        {
+            foreach (var setting in CortanaSettings)
+            {
+                object curVal = ReadRegistryValue(setting.Hive, setting.RegistryPath, setting.ValueName, setting.DefaultValue, setting.ValueKind);
+                if (!curVal.Equals(setting.EnabledValue))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static void SetCortanaEnabled(bool enabled)
+        {
+            foreach (var setting in CortanaSettings)
+            {
+                object valToSet = enabled ? setting.EnabledValue : setting.DisabledValue;
+                WriteRegistryValue(setting.Hive, setting.RegistryPath, setting.ValueName, valToSet, setting.ValueKind);
+            }
+        }
+
+        // C) smartScreenBtn
+        // 1) HKLM\SOFTWARE\Policies\Microsoft\Windows\System => "EnablingSmartScreen" => 0/1
+        // 2) HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer => "SmartScreenEnabled" => "Off"/"On" (REG_SZ)
+        // 3) HKU\!USER_SID!\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost => "EnablingWebContentEvaluation" => 0/1
+        private static readonly string SmartScreenPolicyPath = @"SOFTWARE\Policies\Microsoft\Windows\System";
+        private static readonly string SmartScreenExplorerPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer";
+
+        // Tady si zjistíme SID aktuálního uživatele (podobně jako CurrentUser).
+        private static string CurrentUserSid
+        {
+            get
+            {
+                var sid = WindowsIdentity.GetCurrent().User?.Value;
+                return sid ?? ".DEFAULT";
+            }
+        }
+
+        // Cesta do HKU\[SID]\Software\Microsoft\Windows\CurrentVersion\AppHost
+        private static string SmartScreenUserPath
+        {
+            get
+            {
+                return CurrentUserSid + @"\Software\Microsoft\Windows\CurrentVersion\AppHost";
+            }
+        }
+
+        public static bool IsSmartScreenEnabled()
+        {
+            // 1) EnablingSmartScreen => 1
+            if (!TryReadRegistryValue<int>(RegistryHive.LocalMachine, SmartScreenPolicyPath, "EnablingSmartScreen", out int policyVal, 1))
+                return false;
+            if (policyVal != 1)
+                return false;
+
+            // 2) SmartScreenEnabled => "On"
+            object sseVal = ReadRegistryValue(RegistryHive.LocalMachine, SmartScreenExplorerPath, "SmartScreenEnabled", "Off", RegistryValueKind.String);
+            if (!(sseVal is string s) || !s.Equals("On", StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            // 3) EnablingWebContentEvaluation => 1 (HKU)
+            using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.Users, RegistryView.Registry64))
+            {
+                using (RegistryKey userKey = baseKey.OpenSubKey(SmartScreenUserPath, false))
+                {
+                    if (userKey == null)
+                        return false; // pokud klíč neexistuje, bereme to jako vypnuté
+
+                    object webEvalVal = userKey.GetValue("EnablingWebContentEvaluation");
+                    if (webEvalVal is int intVal)
+                    {
+                        return (intVal == 1);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public static void SetSmartScreenEnabled(bool enabled)
+        {
+            // 1) HKLM\SOFTWARE\Policies\Microsoft\Windows\System => "EnablingSmartScreen" => 0/1
+            WriteRegistryValue(RegistryHive.LocalMachine,
+                SmartScreenPolicyPath,
+                "EnablingSmartScreen",
+                enabled ? 1 : 0,
+                RegistryValueKind.DWord);
+
+            // 2) HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer => "SmartScreenEnabled" => "On"/"Off"
+            WriteRegistryValue(RegistryHive.LocalMachine,
+                SmartScreenExplorerPath,
+                "SmartScreenEnabled",
+                enabled ? "On" : "Off",
+                RegistryValueKind.String);
+
+            // 3) HKU\[SID]\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost => "EnablingWebContentEvaluation" => 0/1
+            using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.Users, RegistryView.Registry64))
+            {
+                using (RegistryKey userKey = baseKey.CreateSubKey(SmartScreenUserPath))
+                {
+                    if (userKey != null)
+                    {
+                        userKey.SetValue("EnablingWebContentEvaluation", enabled ? 1 : 0, RegistryValueKind.DWord);
+                    }
+                }
+            }
+        }
+
+        // D) windowsInsiderBtn
+        // HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\System => "AllowExperimentation" => 0/1
+        // HKLM\SOFTWARE\Microsoft\PolicyManager\default\System\AllowExperimentation => "value" => 0/1
+        private static readonly string InsiderCurrentPath = @"SOFTWARE\Microsoft\PolicyManager\current\device\System";
+        private static readonly string InsiderDefaultPath = @"SOFTWARE\Microsoft\PolicyManager\default\System\AllowExperimentation";
+
+        public static bool IsWindowsInsiderEnabled()
+        {
+            bool ok1 = TryReadRegistryValue<int>(RegistryHive.LocalMachine, InsiderCurrentPath, "AllowExperimentation", out int curVal, 0);
+            if (!ok1 || curVal != 1) return false;
+
+            bool ok2 = TryReadRegistryValue<int>(RegistryHive.LocalMachine, InsiderDefaultPath, "value", out int defVal, 0);
+            if (!ok2 || defVal != 1) return false;
+
+            return true;
+        }
+
+        public static void SetWindowsInsiderEnabled(bool enabled)
+        {
+            int v = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, InsiderCurrentPath, "AllowExperimentation", v, RegistryValueKind.DWord);
+            WriteRegistryValue(RegistryHive.LocalMachine, InsiderDefaultPath, "value", v, RegistryValueKind.DWord);
+        }
+
+        // E) cuiSwitch2 (Biometrics)
+        // HKLM\SOFTWARE\Policies\Microsoft\Biometrics => "Enabled" => 0/1
+        private static readonly string BiometricsPath = @"SOFTWARE\Policies\Microsoft\Biometrics";
+
+        public static bool IsBiometricsEnabled()
+        {
+            bool ok = TryReadRegistryValue<int>(RegistryHive.LocalMachine, BiometricsPath, "Enabled", out int val, 1);
+            if (!ok) return false;
+            return (val == 1);
+        }
+
+        public static void SetBiometricsEnabled(bool enabled)
+        {
+            int v = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, BiometricsPath, "Enabled", v, RegistryValueKind.DWord);
         }
     }
 }
