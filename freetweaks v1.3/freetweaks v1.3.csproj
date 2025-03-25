@@ -11,12 +11,12 @@
 		<ApplicationIcon>FREELOGO.ico</ApplicationIcon>
 
 		<!-- Assembly Information -->
-		<AssemblyName>freetweaks v1.5</AssemblyName>
-		<Version>1.5.0</Version>
-		<FileVersion>1.5.0.0</FileVersion>
+		<AssemblyName>freetweaks v1.7</AssemblyName>
+		<Version>1.7.0</Version>
+		<FileVersion>1.7.0.0</FileVersion>
 		<Authors>crazikktweaks</Authors>
 		<Company>crazikktweaks</Company>
-		<Product>freetweaks v1.5</Product>
+		<Product>freetweaks v1.7</Product>
 		<Description> </Description>
 		<Copyright>Copyright © 2025</Copyright>
 	</PropertyGroup>

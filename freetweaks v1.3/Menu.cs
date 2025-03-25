@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -181,6 +182,8 @@ namespace freetweaks_v1._3
                 hdcpBtn.Checked = SystemSettings.IsHdcpEnabled();
                 overlayBtn.Checked = SystemSettings.IsOverlayEnabled();
                 ulpsBtn.Checked = SystemSettings.IsUlpsEnabled();
+                findmydeviceBtn.CheckedChanged += findmydeviceBtn_CheckedChanged;
+                settingsSyncingBtn.CheckedChanged += settingsSyncingBtn_CheckedChanged;
 
                 // ----- NOVÉ TOGGLE: csrssPriorityBtn -----
                 csrssPriorityBtn.Checked = SystemSettings.IsCsrssPriorityEnabled();
@@ -209,6 +212,11 @@ namespace freetweaks_v1._3
                 // ----- NEW TOGGLE: Automatic Maintenance (cuiSwitch27) -----
                 cuiSwitch27.Checked = SystemSettings.IsAutomaticMaintenanceEnabled();
 
+                bool isFindMyDeviceDisabled = SystemSettings.IsFindMyDeviceDisabled();
+                findmydeviceBtn.Checked = !isFindMyDeviceDisabled;
+
+                bool isSettingsSyncingDisabled = SystemSettings.IsSettingsSyncingDisabled();
+                settingsSyncingBtn.Checked = !isSettingsSyncingDisabled;
             }
             finally
             {
@@ -812,7 +820,7 @@ namespace freetweaks_v1._3
         /// </summary>
         private async void checkForUpdatesBtn_Click(object sender, EventArgs e)
         {
-            string currentVersion = "1.5.0";
+            string currentVersion = "1.7.0";
 
             // JSON endpoint with "latestVersion"
             string versionUrl = "https://crazikktweaks.com/free.json";
@@ -1018,6 +1026,85 @@ namespace freetweaks_v1._3
             windowsPanel2.Hide();
         }
 
-        
+        private void findmydeviceBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings)
+                return;
+
+            bool desiredState = findmydeviceBtn.Checked;
+            SystemSettings.SetFindMyDeviceDisabled(!desiredState);
+
+            bool actualState = !SystemSettings.IsFindMyDeviceDisabled();
+            if (actualState != desiredState)
+            {
+                findmydeviceBtn.CheckedChanged -= findmydeviceBtn_CheckedChanged;
+                findmydeviceBtn.Checked = actualState;
+                findmydeviceBtn.CheckedChanged += findmydeviceBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to apply Find My Device settings.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void settingsSyncingBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings)
+                return;
+
+            bool desiredState = settingsSyncingBtn.Checked;
+            SystemSettings.SetSettingsSyncingDisabled(!desiredState);
+
+            bool actualState = !SystemSettings.IsSettingsSyncingDisabled();
+            if (actualState != desiredState)
+            {
+                settingsSyncingBtn.CheckedChanged -= settingsSyncingBtn_CheckedChanged;
+                settingsSyncingBtn.Checked = actualState;
+                settingsSyncingBtn.CheckedChanged += settingsSyncingBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to apply Settings Syncing settings.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cuiButton3_Click(object sender, EventArgs e)
+        {
+            SystemSettings.ClearWindowsTemp();
+        }
+
+        private void cuiButton4_Click(object sender, EventArgs e)
+        {
+            RecycleBinManager.ClearRecycleBin();
+            MessageBox.Show("Recycle bin has been sucessfully cleared.", "crazikktweaks", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static class RecycleBinManager
+        {
+            [DllImport("Shell32.dll")]
+            private static extern int SHEmptyRecycleBin(IntPtr hwnd, string pszRootPath, RecycleFlags dwFlags);
+
+            [Flags]
+            private enum RecycleFlags : uint
+            {
+                SHERB_NOCONFIRMATION = 0x00000001,
+                SHERB_NOPROGRESSUI = 0x00000002,
+                SHERB_NOSOUND = 0x00000004
+            }
+
+            public static void ClearRecycleBin()
+            {
+                try
+                {
+                    // Set the Recycle Bin path to null to clear all bins
+                    const string recycleBinPath = null;
+
+                    // Call the SHEmptyRecycleBin function with appropriate flags
+                    SHEmptyRecycleBin(IntPtr.Zero, recycleBinPath, RecycleFlags.SHERB_NOCONFIRMATION | RecycleFlags.SHERB_NOPROGRESSUI | RecycleFlags.SHERB_NOSOUND);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+
     }
 }

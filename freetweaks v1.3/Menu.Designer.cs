@@ -136,32 +136,18 @@ namespace freetweaks_v1._3
             cuiControlDrag3 = new CuoreUI.cuiControlDrag(components);
             cuiControlDrag4 = new CuoreUI.cuiControlDrag(components);
             windowsPanel2 = new Panel();
+            cuiButton4 = new cuiButton();
+            cuiButton3 = new cuiButton();
+            settingsSyncingLabel = new Label();
+            settingsSyncingBtn = new cuiSwitch();
+            findmydeviceLabel = new Label();
+            findmydeviceBtn = new cuiSwitch();
             cuiButton1 = new cuiButton();
             cuiButton2 = new cuiButton();
-            label1 = new Label();
-            cuiSwitch1 = new cuiSwitch();
-            label2 = new Label();
-            cuiSwitch3 = new cuiSwitch();
-            label3 = new Label();
-            cuiSwitch4 = new cuiSwitch();
-            label4 = new Label();
-            cuiSwitch10 = new cuiSwitch();
-            label10 = new Label();
-            cuiSwitch17 = new cuiSwitch();
-            label12 = new Label();
-            cuiSwitch18 = new cuiSwitch();
             label19 = new Label();
             cuiSwitch27 = new cuiSwitch();
             label20 = new Label();
             cuiSwitch20 = new cuiSwitch();
-            label21 = new Label();
-            cuiSwitch21 = new cuiSwitch();
-            label22 = new Label();
-            cuiSwitch22 = new cuiSwitch();
-            label23 = new Label();
-            cuiSwitch23 = new cuiSwitch();
-            label24 = new Label();
-            cuiSwitch24 = new cuiSwitch();
             label25 = new Label();
             cuiSwitch25 = new cuiSwitch();
             label26 = new Label();
@@ -405,7 +391,7 @@ namespace freetweaks_v1._3
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(139, 11);
             nameLabel.TabIndex = 5;
-            nameLabel.Text = "crazikktweaks free utility v.1.5";
+            nameLabel.Text = "crazikktweaks free utility v.1.7";
             // 
             // button1
             // 
@@ -1764,32 +1750,18 @@ namespace freetweaks_v1._3
             // 
             // windowsPanel2
             // 
+            windowsPanel2.Controls.Add(cuiButton4);
+            windowsPanel2.Controls.Add(cuiButton3);
+            windowsPanel2.Controls.Add(settingsSyncingLabel);
+            windowsPanel2.Controls.Add(settingsSyncingBtn);
+            windowsPanel2.Controls.Add(findmydeviceLabel);
+            windowsPanel2.Controls.Add(findmydeviceBtn);
             windowsPanel2.Controls.Add(cuiButton1);
             windowsPanel2.Controls.Add(cuiButton2);
-            windowsPanel2.Controls.Add(label1);
-            windowsPanel2.Controls.Add(cuiSwitch1);
-            windowsPanel2.Controls.Add(label2);
-            windowsPanel2.Controls.Add(cuiSwitch3);
-            windowsPanel2.Controls.Add(label3);
-            windowsPanel2.Controls.Add(cuiSwitch4);
-            windowsPanel2.Controls.Add(label4);
-            windowsPanel2.Controls.Add(cuiSwitch10);
-            windowsPanel2.Controls.Add(label10);
-            windowsPanel2.Controls.Add(cuiSwitch17);
-            windowsPanel2.Controls.Add(label12);
-            windowsPanel2.Controls.Add(cuiSwitch18);
             windowsPanel2.Controls.Add(label19);
             windowsPanel2.Controls.Add(cuiSwitch27);
             windowsPanel2.Controls.Add(label20);
             windowsPanel2.Controls.Add(cuiSwitch20);
-            windowsPanel2.Controls.Add(label21);
-            windowsPanel2.Controls.Add(cuiSwitch21);
-            windowsPanel2.Controls.Add(label22);
-            windowsPanel2.Controls.Add(cuiSwitch22);
-            windowsPanel2.Controls.Add(label23);
-            windowsPanel2.Controls.Add(cuiSwitch23);
-            windowsPanel2.Controls.Add(label24);
-            windowsPanel2.Controls.Add(cuiSwitch24);
             windowsPanel2.Controls.Add(label25);
             windowsPanel2.Controls.Add(cuiSwitch25);
             windowsPanel2.Controls.Add(label26);
@@ -1799,6 +1771,140 @@ namespace freetweaks_v1._3
             windowsPanel2.Name = "windowsPanel2";
             windowsPanel2.Size = new Size(617, 423);
             windowsPanel2.TabIndex = 39;
+            // 
+            // cuiButton4
+            // 
+            cuiButton4.CheckButton = false;
+            cuiButton4.Checked = false;
+            cuiButton4.CheckedBackground = Color.PowderBlue;
+            cuiButton4.CheckedForeColor = Color.White;
+            cuiButton4.CheckedImageTint = Color.White;
+            cuiButton4.CheckedOutline = Color.PowderBlue;
+            cuiButton4.Content = "CLEAN RECYCLE BIN";
+            cuiButton4.DialogResult = DialogResult.None;
+            cuiButton4.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiButton4.ForeColor = Color.White;
+            cuiButton4.HoverBackground = Color.PowderBlue;
+            cuiButton4.HoveredImageTint = Color.White;
+            cuiButton4.HoverForeColor = Color.White;
+            cuiButton4.HoverOutline = Color.Empty;
+            cuiButton4.Image = null;
+            cuiButton4.ImageAutoCenter = true;
+            cuiButton4.ImageExpand = new Point(0, 0);
+            cuiButton4.ImageOffset = new Point(0, 0);
+            cuiButton4.ImageTint = Color.White;
+            cuiButton4.Location = new Point(370, 198);
+            cuiButton4.Name = "cuiButton4";
+            cuiButton4.NormalBackground = Color.FromArgb(18, 18, 18);
+            cuiButton4.NormalOutline = Color.PowderBlue;
+            cuiButton4.OutlineThickness = 3F;
+            cuiButton4.PressedBackground = Color.PowderBlue;
+            cuiButton4.PressedForeColor = Color.White;
+            cuiButton4.PressedImageTint = Color.White;
+            cuiButton4.PressedOutline = Color.Empty;
+            cuiButton4.Rounding = new Padding(8);
+            cuiButton4.Size = new Size(186, 35);
+            cuiButton4.TabIndex = 44;
+            cuiButton4.TextOffset = new Point(0, 0);
+            cuiButton4.Click += cuiButton4_Click;
+            // 
+            // cuiButton3
+            // 
+            cuiButton3.CheckButton = false;
+            cuiButton3.Checked = false;
+            cuiButton3.CheckedBackground = Color.PowderBlue;
+            cuiButton3.CheckedForeColor = Color.White;
+            cuiButton3.CheckedImageTint = Color.White;
+            cuiButton3.CheckedOutline = Color.PowderBlue;
+            cuiButton3.Content = "CLEAN TEMP FILES";
+            cuiButton3.DialogResult = DialogResult.None;
+            cuiButton3.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiButton3.ForeColor = Color.White;
+            cuiButton3.HoverBackground = Color.PowderBlue;
+            cuiButton3.HoveredImageTint = Color.White;
+            cuiButton3.HoverForeColor = Color.White;
+            cuiButton3.HoverOutline = Color.Empty;
+            cuiButton3.Image = null;
+            cuiButton3.ImageAutoCenter = true;
+            cuiButton3.ImageExpand = new Point(0, 0);
+            cuiButton3.ImageOffset = new Point(0, 0);
+            cuiButton3.ImageTint = Color.White;
+            cuiButton3.Location = new Point(23, 198);
+            cuiButton3.Name = "cuiButton3";
+            cuiButton3.NormalBackground = Color.FromArgb(18, 18, 18);
+            cuiButton3.NormalOutline = Color.PowderBlue;
+            cuiButton3.OutlineThickness = 3F;
+            cuiButton3.PressedBackground = Color.PowderBlue;
+            cuiButton3.PressedForeColor = Color.White;
+            cuiButton3.PressedImageTint = Color.White;
+            cuiButton3.PressedOutline = Color.Empty;
+            cuiButton3.Rounding = new Padding(8);
+            cuiButton3.Size = new Size(186, 35);
+            cuiButton3.TabIndex = 43;
+            cuiButton3.TextOffset = new Point(0, 0);
+            cuiButton3.Click += cuiButton3_Click;
+            // 
+            // settingsSyncingLabel
+            // 
+            settingsSyncingLabel.AutoSize = true;
+            settingsSyncingLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            settingsSyncingLabel.ForeColor = Color.White;
+            settingsSyncingLabel.Location = new Point(370, 163);
+            settingsSyncingLabel.Name = "settingsSyncingLabel";
+            settingsSyncingLabel.Size = new Size(127, 18);
+            settingsSyncingLabel.TabIndex = 42;
+            settingsSyncingLabel.Text = "Settings Syncing";
+            // 
+            // settingsSyncingBtn
+            // 
+            settingsSyncingBtn.Checked = false;
+            settingsSyncingBtn.CheckedBackground = Color.Black;
+            settingsSyncingBtn.CheckedForeground = Color.PowderBlue;
+            settingsSyncingBtn.CheckedOutlineColor = Color.PowderBlue;
+            settingsSyncingBtn.ForeColor = Color.PowderBlue;
+            settingsSyncingBtn.Location = new Point(519, 163);
+            settingsSyncingBtn.Name = "settingsSyncingBtn";
+            settingsSyncingBtn.OutlineStyle = true;
+            settingsSyncingBtn.OutlineThickness = 1F;
+            settingsSyncingBtn.ShowSymbols = true;
+            settingsSyncingBtn.Size = new Size(39, 20);
+            settingsSyncingBtn.TabIndex = 41;
+            settingsSyncingBtn.ThumbSizeModifier = new Size(0, 0);
+            settingsSyncingBtn.UncheckedBackground = Color.Black;
+            settingsSyncingBtn.UncheckedForeground = Color.Red;
+            settingsSyncingBtn.UncheckedOutlineColor = Color.Red;
+            settingsSyncingBtn.Click += settingsSyncingBtn_CheckedChanged;
+            // 
+            // findmydeviceLabel
+            // 
+            findmydeviceLabel.AutoSize = true;
+            findmydeviceLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            findmydeviceLabel.ForeColor = Color.White;
+            findmydeviceLabel.Location = new Point(21, 161);
+            findmydeviceLabel.Name = "findmydeviceLabel";
+            findmydeviceLabel.Size = new Size(117, 18);
+            findmydeviceLabel.TabIndex = 40;
+            findmydeviceLabel.Text = "Find My Device";
+            // 
+            // findmydeviceBtn
+            // 
+            findmydeviceBtn.Checked = false;
+            findmydeviceBtn.CheckedBackground = Color.Black;
+            findmydeviceBtn.CheckedForeground = Color.PowderBlue;
+            findmydeviceBtn.CheckedOutlineColor = Color.PowderBlue;
+            findmydeviceBtn.ForeColor = Color.PowderBlue;
+            findmydeviceBtn.Location = new Point(172, 163);
+            findmydeviceBtn.Name = "findmydeviceBtn";
+            findmydeviceBtn.OutlineStyle = true;
+            findmydeviceBtn.OutlineThickness = 1F;
+            findmydeviceBtn.ShowSymbols = true;
+            findmydeviceBtn.Size = new Size(39, 20);
+            findmydeviceBtn.TabIndex = 39;
+            findmydeviceBtn.ThumbSizeModifier = new Size(0, 0);
+            findmydeviceBtn.UncheckedBackground = Color.Black;
+            findmydeviceBtn.UncheckedForeground = Color.Red;
+            findmydeviceBtn.UncheckedOutlineColor = Color.Red;
+            findmydeviceBtn.Click += findmydeviceBtn_CheckedChanged;
             // 
             // cuiButton1
             // 
@@ -1872,186 +1978,6 @@ namespace freetweaks_v1._3
             cuiButton2.TextOffset = new Point(0, 0);
             cuiButton2.Click += cuiButton2_Click_1;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(370, 286);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 18);
-            label1.TabIndex = 36;
-            label1.Text = "COMING SOON";
-            // 
-            // cuiSwitch1
-            // 
-            cuiSwitch1.Checked = false;
-            cuiSwitch1.CheckedBackground = Color.Black;
-            cuiSwitch1.CheckedForeground = Color.PowderBlue;
-            cuiSwitch1.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch1.ForeColor = Color.PowderBlue;
-            cuiSwitch1.Location = new Point(519, 285);
-            cuiSwitch1.Name = "cuiSwitch1";
-            cuiSwitch1.OutlineStyle = true;
-            cuiSwitch1.OutlineThickness = 1F;
-            cuiSwitch1.ShowSymbols = true;
-            cuiSwitch1.Size = new Size(39, 20);
-            cuiSwitch1.TabIndex = 35;
-            cuiSwitch1.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch1.UncheckedBackground = Color.Black;
-            cuiSwitch1.UncheckedForeground = Color.Red;
-            cuiSwitch1.UncheckedOutlineColor = Color.Red;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(370, 331);
-            label2.Name = "label2";
-            label2.Size = new Size(120, 18);
-            label2.TabIndex = 34;
-            label2.Text = "COMING SOON";
-            // 
-            // cuiSwitch3
-            // 
-            cuiSwitch3.Checked = false;
-            cuiSwitch3.CheckedBackground = Color.Black;
-            cuiSwitch3.CheckedForeground = Color.PowderBlue;
-            cuiSwitch3.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch3.ForeColor = Color.PowderBlue;
-            cuiSwitch3.Location = new Point(519, 328);
-            cuiSwitch3.Name = "cuiSwitch3";
-            cuiSwitch3.OutlineStyle = true;
-            cuiSwitch3.OutlineThickness = 1F;
-            cuiSwitch3.ShowSymbols = true;
-            cuiSwitch3.Size = new Size(39, 20);
-            cuiSwitch3.TabIndex = 33;
-            cuiSwitch3.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch3.UncheckedBackground = Color.Black;
-            cuiSwitch3.UncheckedForeground = Color.Red;
-            cuiSwitch3.UncheckedOutlineColor = Color.Red;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(19, 329);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 18);
-            label3.TabIndex = 32;
-            label3.Text = "COMING SOON";
-            // 
-            // cuiSwitch4
-            // 
-            cuiSwitch4.Checked = false;
-            cuiSwitch4.CheckedBackground = Color.Black;
-            cuiSwitch4.CheckedForeground = Color.PowderBlue;
-            cuiSwitch4.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch4.ForeColor = Color.PowderBlue;
-            cuiSwitch4.Location = new Point(172, 329);
-            cuiSwitch4.Name = "cuiSwitch4";
-            cuiSwitch4.OutlineStyle = true;
-            cuiSwitch4.OutlineThickness = 1F;
-            cuiSwitch4.ShowSymbols = true;
-            cuiSwitch4.Size = new Size(39, 20);
-            cuiSwitch4.TabIndex = 31;
-            cuiSwitch4.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch4.UncheckedBackground = Color.Black;
-            cuiSwitch4.UncheckedForeground = Color.Red;
-            cuiSwitch4.UncheckedOutlineColor = Color.Red;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(19, 286);
-            label4.Name = "label4";
-            label4.Size = new Size(120, 18);
-            label4.TabIndex = 30;
-            label4.Text = "COMING SOON";
-            // 
-            // cuiSwitch10
-            // 
-            cuiSwitch10.Checked = false;
-            cuiSwitch10.CheckedBackground = Color.Black;
-            cuiSwitch10.CheckedForeground = Color.PowderBlue;
-            cuiSwitch10.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch10.ForeColor = Color.PowderBlue;
-            cuiSwitch10.Location = new Point(172, 285);
-            cuiSwitch10.Name = "cuiSwitch10";
-            cuiSwitch10.OutlineStyle = true;
-            cuiSwitch10.OutlineThickness = 1F;
-            cuiSwitch10.ShowSymbols = true;
-            cuiSwitch10.Size = new Size(39, 20);
-            cuiSwitch10.TabIndex = 29;
-            cuiSwitch10.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch10.UncheckedBackground = Color.Black;
-            cuiSwitch10.UncheckedForeground = Color.Red;
-            cuiSwitch10.UncheckedOutlineColor = Color.Red;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(370, 202);
-            label10.Name = "label10";
-            label10.Size = new Size(120, 18);
-            label10.TabIndex = 28;
-            label10.Text = "COMING SOON";
-            // 
-            // cuiSwitch17
-            // 
-            cuiSwitch17.Checked = false;
-            cuiSwitch17.CheckedBackground = Color.Black;
-            cuiSwitch17.CheckedForeground = Color.PowderBlue;
-            cuiSwitch17.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch17.ForeColor = Color.PowderBlue;
-            cuiSwitch17.Location = new Point(519, 201);
-            cuiSwitch17.Name = "cuiSwitch17";
-            cuiSwitch17.OutlineStyle = true;
-            cuiSwitch17.OutlineThickness = 1F;
-            cuiSwitch17.ShowSymbols = true;
-            cuiSwitch17.Size = new Size(39, 20);
-            cuiSwitch17.TabIndex = 27;
-            cuiSwitch17.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch17.UncheckedBackground = Color.Black;
-            cuiSwitch17.UncheckedForeground = Color.Red;
-            cuiSwitch17.UncheckedOutlineColor = Color.Red;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(370, 161);
-            label12.Name = "label12";
-            label12.Size = new Size(120, 18);
-            label12.TabIndex = 26;
-            label12.Text = "COMING SOON";
-            // 
-            // cuiSwitch18
-            // 
-            cuiSwitch18.Checked = false;
-            cuiSwitch18.CheckedBackground = Color.Black;
-            cuiSwitch18.CheckedForeground = Color.PowderBlue;
-            cuiSwitch18.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch18.ForeColor = Color.PowderBlue;
-            cuiSwitch18.Location = new Point(519, 161);
-            cuiSwitch18.Name = "cuiSwitch18";
-            cuiSwitch18.OutlineStyle = true;
-            cuiSwitch18.OutlineThickness = 1F;
-            cuiSwitch18.ShowSymbols = true;
-            cuiSwitch18.Size = new Size(39, 20);
-            cuiSwitch18.TabIndex = 25;
-            cuiSwitch18.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch18.UncheckedBackground = Color.Black;
-            cuiSwitch18.UncheckedForeground = Color.Red;
-            cuiSwitch18.UncheckedOutlineColor = Color.Red;
-            // 
             // label19
             // 
             label19.AutoSize = true;
@@ -2115,126 +2041,6 @@ namespace freetweaks_v1._3
             cuiSwitch20.UncheckedOutlineColor = Color.Red;
             cuiSwitch20.CheckedChanged += cuiSwitch20_CheckedChanged;
             cuiSwitch20.Click += cuiSwitch20_CheckedChanged;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.White;
-            label21.Location = new Point(370, 247);
-            label21.Name = "label21";
-            label21.Size = new Size(120, 18);
-            label21.TabIndex = 20;
-            label21.Text = "COMING SOON";
-            // 
-            // cuiSwitch21
-            // 
-            cuiSwitch21.Checked = false;
-            cuiSwitch21.CheckedBackground = Color.Black;
-            cuiSwitch21.CheckedForeground = Color.PowderBlue;
-            cuiSwitch21.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch21.ForeColor = Color.PowderBlue;
-            cuiSwitch21.Location = new Point(519, 244);
-            cuiSwitch21.Name = "cuiSwitch21";
-            cuiSwitch21.OutlineStyle = true;
-            cuiSwitch21.OutlineThickness = 1F;
-            cuiSwitch21.ShowSymbols = true;
-            cuiSwitch21.Size = new Size(39, 20);
-            cuiSwitch21.TabIndex = 19;
-            cuiSwitch21.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch21.UncheckedBackground = Color.Black;
-            cuiSwitch21.UncheckedForeground = Color.Red;
-            cuiSwitch21.UncheckedOutlineColor = Color.Red;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.White;
-            label22.Location = new Point(19, 245);
-            label22.Name = "label22";
-            label22.Size = new Size(120, 18);
-            label22.TabIndex = 18;
-            label22.Text = "COMING SOON";
-            // 
-            // cuiSwitch22
-            // 
-            cuiSwitch22.Checked = false;
-            cuiSwitch22.CheckedBackground = Color.Black;
-            cuiSwitch22.CheckedForeground = Color.PowderBlue;
-            cuiSwitch22.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch22.ForeColor = Color.PowderBlue;
-            cuiSwitch22.Location = new Point(172, 245);
-            cuiSwitch22.Name = "cuiSwitch22";
-            cuiSwitch22.OutlineStyle = true;
-            cuiSwitch22.OutlineThickness = 1F;
-            cuiSwitch22.ShowSymbols = true;
-            cuiSwitch22.Size = new Size(39, 20);
-            cuiSwitch22.TabIndex = 17;
-            cuiSwitch22.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch22.UncheckedBackground = Color.Black;
-            cuiSwitch22.UncheckedForeground = Color.Red;
-            cuiSwitch22.UncheckedOutlineColor = Color.Red;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.ForeColor = Color.White;
-            label23.Location = new Point(19, 202);
-            label23.Name = "label23";
-            label23.Size = new Size(120, 18);
-            label23.TabIndex = 16;
-            label23.Text = "COMING SOON";
-            // 
-            // cuiSwitch23
-            // 
-            cuiSwitch23.Checked = false;
-            cuiSwitch23.CheckedBackground = Color.Black;
-            cuiSwitch23.CheckedForeground = Color.PowderBlue;
-            cuiSwitch23.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch23.ForeColor = Color.PowderBlue;
-            cuiSwitch23.Location = new Point(172, 201);
-            cuiSwitch23.Name = "cuiSwitch23";
-            cuiSwitch23.OutlineStyle = true;
-            cuiSwitch23.OutlineThickness = 1F;
-            cuiSwitch23.ShowSymbols = true;
-            cuiSwitch23.Size = new Size(39, 20);
-            cuiSwitch23.TabIndex = 15;
-            cuiSwitch23.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch23.UncheckedBackground = Color.Black;
-            cuiSwitch23.UncheckedForeground = Color.Red;
-            cuiSwitch23.UncheckedOutlineColor = Color.Red;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.ForeColor = Color.White;
-            label24.Location = new Point(19, 161);
-            label24.Name = "label24";
-            label24.Size = new Size(120, 18);
-            label24.TabIndex = 14;
-            label24.Text = "COMING SOON";
-            // 
-            // cuiSwitch24
-            // 
-            cuiSwitch24.Checked = false;
-            cuiSwitch24.CheckedBackground = Color.Black;
-            cuiSwitch24.CheckedForeground = Color.PowderBlue;
-            cuiSwitch24.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch24.ForeColor = Color.PowderBlue;
-            cuiSwitch24.Location = new Point(172, 161);
-            cuiSwitch24.Name = "cuiSwitch24";
-            cuiSwitch24.OutlineStyle = true;
-            cuiSwitch24.OutlineThickness = 1F;
-            cuiSwitch24.ShowSymbols = true;
-            cuiSwitch24.Size = new Size(39, 20);
-            cuiSwitch24.TabIndex = 13;
-            cuiSwitch24.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch24.UncheckedBackground = Color.Black;
-            cuiSwitch24.UncheckedForeground = Color.Red;
-            cuiSwitch24.UncheckedOutlineColor = Color.Red;
             // 
             // label25
             // 
@@ -2315,9 +2121,9 @@ namespace freetweaks_v1._3
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(800, 450);
-            Controls.Add(cpuPanel);
             Controls.Add(windowsPanel2);
             Controls.Add(windowsPanel);
+            Controls.Add(cpuPanel);
             Controls.Add(gpuPanel);
             Controls.Add(button1);
             Controls.Add(nameLabel);
@@ -2463,34 +2269,20 @@ namespace freetweaks_v1._3
         private Panel windowsPanel2;
         private cuiButton cuiButton1;
         private cuiButton cuiButton2;
-        private Label label1;
-        private cuiSwitch cuiSwitch1;
-        private Label label2;
-        private cuiSwitch cuiSwitch3;
-        private Label label3;
-        private cuiSwitch cuiSwitch4;
-        private Label label4;
-        private cuiSwitch cuiSwitch10;
-        private Label label10;
-        private cuiSwitch cuiSwitch17;
-        private Label label12;
-        private cuiSwitch cuiSwitch18;
         private Label label19;
         private cuiSwitch cuiSwitch27;
         private Label label20;
         private cuiSwitch cuiSwitch20;
-        private Label label21;
-        private cuiSwitch cuiSwitch21;
-        private Label label22;
-        private cuiSwitch cuiSwitch22;
-        private Label label23;
-        private cuiSwitch cuiSwitch23;
-        private Label label24;
-        private cuiSwitch cuiSwitch24;
         private Label label25;
         private cuiSwitch cuiSwitch25;
         private Label label26;
         private cuiSwitch cuiSwitch26;
         private Label label27;
+        private Label settingsSyncingLabel;
+        private cuiSwitch settingsSyncingBtn;
+        private Label findmydeviceLabel;
+        private cuiSwitch findmydeviceBtn;
+        private cuiButton cuiButton3;
+        private cuiButton cuiButton4;
     }
 }

@@ -1618,9 +1618,77 @@ namespace freetweaks_v1._3
         }
 
 
+        private const string FindMyDeviceRegistryPath = @"SOFTWARE\Microsoft\Settings\FindMyDevice";
+        private const string FindMyDeviceValueName = "LocationSyncEnabled";
+
+        public static bool IsFindMyDeviceDisabled()
+        {
+            int value;
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, FindMyDeviceRegistryPath, FindMyDeviceValueName, out value, 1))
+            {
+                return value == 0;
+            }
+            return false;
+        }
+
+        public static void SetFindMyDeviceDisabled(bool disabled)
+        {
+            WriteRegistryValue(RegistryHive.LocalMachine, FindMyDeviceRegistryPath, FindMyDeviceValueName, disabled ? 0 : 1, RegistryValueKind.DWord);
+        }
 
 
-    }
+        private const string SettingsSyncingRegistryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync";
+        private const string SettingsSyncingValueName = "SyncPolicy";
+
+        public static bool IsSettingsSyncingDisabled()
+        {
+            int value;
+            if (TryReadRegistryValue<int>(RegistryHive.CurrentUser, SettingsSyncingRegistryPath, SettingsSyncingValueName, out value, 0))
+            {
+                return value == 5;
+            }
+            return false;
+        }
+
+        public static void SetSettingsSyncingDisabled(bool disabled)
+        {
+            WriteRegistryValue(RegistryHive.CurrentUser, SettingsSyncingRegistryPath, SettingsSyncingValueName, disabled ? 5 : 0, RegistryValueKind.DWord);
+        }
+
+        public static void ClearWindowsTemp()
+        {
+            try
+            {
+                // Specify the path to the Windows Temp directory
+                string tempPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Temp");
+
+                // Delete all files in the Windows Temp directory
+                DirectoryInfo tempDir = new DirectoryInfo(tempPath);
+                foreach (FileInfo file in tempDir.GetFiles())
+                {
+                    try
+                    {
+                        file.Delete();
+                    }
+                    catch (Exception ex)
+                    {
+                        // MessageBox.Show($"Error deleting file: {file.FullName}\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                // Display a success message for Windows Temp folder
+                MessageBox.Show("Windows Temp folder cleared successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Display an error message for Windows Temp folder
+                // MessageBox.Show($"Error clearing Windows Temp folder:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+        }
+}
 }
 
 
