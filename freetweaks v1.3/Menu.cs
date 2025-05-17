@@ -797,7 +797,9 @@ namespace freetweaks_v1._3
         /// </summary>
         private async void checkForUpdatesBtn_Click(object sender, EventArgs e)
         {
-            string currentVersion = "1.3.0";
+            // Determine our current version from the assembly information so
+            // the update check stays accurate even when the version changes.
+            string currentVersion = Application.ProductVersion;
 
             // JSON endpoint with "latestVersion"
             string versionUrl = "https://crazikktweaks.com/free.json";
