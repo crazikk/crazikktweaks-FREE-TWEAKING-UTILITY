@@ -3,7 +3,7 @@
 This project is a simple Windows Forms (C#) application that allows you to tweak various system settings at the registry level (Windows, CPU, GPU, etc.) to optimize system performance and responsiveness. The project consists of:
 
 1. **panel_core (menu.cs)** – the main form that provides the user interface, handles panel switching (Windows, CPU, GPU, Home), and the logic for loading/writing registry values.  
-2. **SystemSettings (systemsettings.cs)** – a static class that encapsulates all registry read/write operations. It contains the paths, values, and toggle logic for each setting (button) in the application.
+2. **SystemSettings (SystemSettings.cs)** – a static class that encapsulates all registry read/write operations. It contains the paths, values, and toggle logic for each setting (button) in the application.
 
 ---
 
@@ -31,7 +31,7 @@ This project is a simple Windows Forms (C#) application that allows you to tweak
   - The constructor sets up UI colors, hides unnecessary panels, and configures the *Home* panel by default.
   - The `InitializeAllSettings()` method reads all toggle states from the registry so the UI reflects the actual system status.
 
-### `SystemSettings` Class (*systemsettings.cs*)
+### `SystemSettings` Class (*SystemSettings.cs*)
 - Implements most of the logic for:
   - **Reading / writing** values from/to the Windows Registry (HKLM, HKCU, etc.).
   - Determining whether a specific feature is enabled or disabled, based on registry paths and values.
