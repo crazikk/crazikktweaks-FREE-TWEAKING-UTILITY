@@ -81,16 +81,16 @@ namespace freetweaks_v1._3
             notificationsLabel = new Label();
             notificationsBtn = new cuiSwitch();
             cpuPanel = new Panel();
-            label18 = new Label();
-            cuiSwitch13 = new cuiSwitch();
-            label9 = new Label();
+            schedulerClockRateLabel = new Label();
+            schedulerClockRateBtn = new cuiSwitch();
+            highPrecisionTimerLabel = new Label();
             csrssPriorityLabel = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            cuiSwitch9 = new cuiSwitch();
+            audioIrqBoostLabel = new Label();
+            clockIrqBoostLabel = new Label();
+            highPrecisionTimerBtn = new cuiSwitch();
             csrssPriorityBtn = new cuiSwitch();
-            cuiSwitch11 = new cuiSwitch();
-            cuiSwitch12 = new cuiSwitch();
+            audioIrqBoostBtn = new cuiSwitch();
+            clockIrqBoostBtn = new cuiSwitch();
             coreParkingLabel = new Label();
             coreParkingBtn = new cuiSwitch();
             fairShareLabel = new Label();
@@ -153,6 +153,14 @@ namespace freetweaks_v1._3
             label26 = new Label();
             cuiSwitch26 = new cuiSwitch();
             label27 = new Label();
+            gameDvrLabel = new Label();
+            gameDvrBtn = new cuiSwitch();
+            smbSessionLabel = new Label();
+            smbSessionBtn = new cuiSwitch();
+            powerThrottlingLabel = new Label();
+            powerThrottlingBtn = new cuiSwitch();
+            systemResponsivenessLabel = new Label();
+            systemResponsivenessBtn = new cuiSwitch();
             sidePanel.SuspendLayout();
             windowsPanel.SuspendLayout();
             cpuPanel.SuspendLayout();
@@ -964,16 +972,16 @@ namespace freetweaks_v1._3
             // 
             // cpuPanel
             // 
-            cpuPanel.Controls.Add(label18);
-            cpuPanel.Controls.Add(cuiSwitch13);
-            cpuPanel.Controls.Add(label9);
+            cpuPanel.Controls.Add(schedulerClockRateLabel);
+            cpuPanel.Controls.Add(schedulerClockRateBtn);
+            cpuPanel.Controls.Add(highPrecisionTimerLabel);
             cpuPanel.Controls.Add(csrssPriorityLabel);
-            cpuPanel.Controls.Add(label13);
-            cpuPanel.Controls.Add(label14);
-            cpuPanel.Controls.Add(cuiSwitch9);
+            cpuPanel.Controls.Add(audioIrqBoostLabel);
+            cpuPanel.Controls.Add(clockIrqBoostLabel);
+            cpuPanel.Controls.Add(highPrecisionTimerBtn);
             cpuPanel.Controls.Add(csrssPriorityBtn);
-            cpuPanel.Controls.Add(cuiSwitch11);
-            cpuPanel.Controls.Add(cuiSwitch12);
+            cpuPanel.Controls.Add(audioIrqBoostBtn);
+            cpuPanel.Controls.Add(clockIrqBoostBtn);
             cpuPanel.Controls.Add(coreParkingLabel);
             cpuPanel.Controls.Add(coreParkingBtn);
             cpuPanel.Controls.Add(fairShareLabel);
@@ -990,47 +998,47 @@ namespace freetweaks_v1._3
             cpuPanel.Size = new Size(617, 423);
             cpuPanel.TabIndex = 37;
             // 
-            // label18
+            // schedulerClockRateLabel
+            //
+            schedulerClockRateLabel.AutoSize = true;
+            schedulerClockRateLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            schedulerClockRateLabel.ForeColor = Color.White;
+            schedulerClockRateLabel.Location = new Point(369, 251);
+            schedulerClockRateLabel.Name = "schedulerClockRateLabel";
+            schedulerClockRateLabel.Size = new Size(156, 18);
+            schedulerClockRateLabel.TabIndex = 56;
+            schedulerClockRateLabel.Text = "Scheduler Clock Rate";
             // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.ForeColor = Color.White;
-            label18.Location = new Point(369, 251);
-            label18.Name = "label18";
-            label18.Size = new Size(103, 18);
-            label18.TabIndex = 56;
-            label18.Text = "Coming Soon";
+            // schedulerClockRateBtn
+            //
+            schedulerClockRateBtn.Checked = false;
+            schedulerClockRateBtn.CheckedBackground = Color.Black;
+            schedulerClockRateBtn.CheckedForeground = Color.PowderBlue;
+            schedulerClockRateBtn.CheckedOutlineColor = Color.PowderBlue;
+            schedulerClockRateBtn.ForeColor = Color.PowderBlue;
+            schedulerClockRateBtn.Location = new Point(518, 249);
+            schedulerClockRateBtn.Name = "schedulerClockRateBtn";
+            schedulerClockRateBtn.OutlineStyle = true;
+            schedulerClockRateBtn.OutlineThickness = 1F;
+            schedulerClockRateBtn.ShowSymbols = true;
+            schedulerClockRateBtn.Size = new Size(39, 20);
+            schedulerClockRateBtn.TabIndex = 55;
+            schedulerClockRateBtn.ThumbSizeModifier = new Size(0, 0);
+            schedulerClockRateBtn.UncheckedBackground = Color.Black;
+            schedulerClockRateBtn.UncheckedForeground = Color.Red;
+            schedulerClockRateBtn.UncheckedOutlineColor = Color.Red;
+            schedulerClockRateBtn.CheckedChanged += schedulerClockRateBtn_CheckedChanged;
             // 
-            // cuiSwitch13
-            // 
-            cuiSwitch13.Checked = false;
-            cuiSwitch13.CheckedBackground = Color.Black;
-            cuiSwitch13.CheckedForeground = Color.PowderBlue;
-            cuiSwitch13.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch13.Enabled = false;
-            cuiSwitch13.ForeColor = Color.PowderBlue;
-            cuiSwitch13.Location = new Point(518, 249);
-            cuiSwitch13.Name = "cuiSwitch13";
-            cuiSwitch13.OutlineStyle = true;
-            cuiSwitch13.OutlineThickness = 1F;
-            cuiSwitch13.ShowSymbols = true;
-            cuiSwitch13.Size = new Size(39, 20);
-            cuiSwitch13.TabIndex = 55;
-            cuiSwitch13.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch13.UncheckedBackground = Color.Black;
-            cuiSwitch13.UncheckedForeground = Color.Red;
-            cuiSwitch13.UncheckedOutlineColor = Color.Red;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(369, 210);
-            label9.Name = "label9";
-            label9.Size = new Size(103, 18);
-            label9.TabIndex = 54;
-            label9.Text = "Coming Soon";
+            // highPrecisionTimerLabel
+            //
+            highPrecisionTimerLabel.AutoSize = true;
+            highPrecisionTimerLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            highPrecisionTimerLabel.ForeColor = Color.White;
+            highPrecisionTimerLabel.Location = new Point(369, 210);
+            highPrecisionTimerLabel.Name = "highPrecisionTimerLabel";
+            highPrecisionTimerLabel.Size = new Size(154, 18);
+            highPrecisionTimerLabel.TabIndex = 54;
+            highPrecisionTimerLabel.Text = "High-Precision Timer";
             // 
             // csrssPriorityLabel
             // 
@@ -1043,47 +1051,47 @@ namespace freetweaks_v1._3
             csrssPriorityLabel.TabIndex = 53;
             csrssPriorityLabel.Text = "CSRSS Priority";
             // 
-            // label13
+            // audioIrqBoostLabel
+            //
+            audioIrqBoostLabel.AutoSize = true;
+            audioIrqBoostLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            audioIrqBoostLabel.ForeColor = Color.White;
+            audioIrqBoostLabel.Location = new Point(22, 251);
+            audioIrqBoostLabel.Name = "audioIrqBoostLabel";
+            audioIrqBoostLabel.Size = new Size(126, 18);
+            audioIrqBoostLabel.TabIndex = 52;
+            audioIrqBoostLabel.Text = "Audio IRQ Boost";
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.White;
-            label13.Location = new Point(22, 251);
-            label13.Name = "label13";
-            label13.Size = new Size(103, 18);
-            label13.TabIndex = 52;
-            label13.Text = "Coming Soon";
+            // clockIrqBoostLabel
+            //
+            clockIrqBoostLabel.AutoSize = true;
+            clockIrqBoostLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            clockIrqBoostLabel.ForeColor = Color.White;
+            clockIrqBoostLabel.Location = new Point(21, 210);
+            clockIrqBoostLabel.Name = "clockIrqBoostLabel";
+            clockIrqBoostLabel.Size = new Size(120, 18);
+            clockIrqBoostLabel.TabIndex = 51;
+            clockIrqBoostLabel.Text = "Clock IRQ Boost";
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(21, 210);
-            label14.Name = "label14";
-            label14.Size = new Size(103, 18);
-            label14.TabIndex = 51;
-            label14.Text = "Coming Soon";
-            // 
-            // cuiSwitch9
-            // 
-            cuiSwitch9.Checked = false;
-            cuiSwitch9.CheckedBackground = Color.Black;
-            cuiSwitch9.CheckedForeground = Color.PowderBlue;
-            cuiSwitch9.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch9.Enabled = false;
-            cuiSwitch9.ForeColor = Color.PowderBlue;
-            cuiSwitch9.Location = new Point(518, 208);
-            cuiSwitch9.Name = "cuiSwitch9";
-            cuiSwitch9.OutlineStyle = true;
-            cuiSwitch9.OutlineThickness = 1F;
-            cuiSwitch9.ShowSymbols = true;
-            cuiSwitch9.Size = new Size(39, 20);
-            cuiSwitch9.TabIndex = 50;
-            cuiSwitch9.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch9.UncheckedBackground = Color.Black;
-            cuiSwitch9.UncheckedForeground = Color.Red;
-            cuiSwitch9.UncheckedOutlineColor = Color.Red;
+            // highPrecisionTimerBtn
+            //
+            highPrecisionTimerBtn.Checked = false;
+            highPrecisionTimerBtn.CheckedBackground = Color.Black;
+            highPrecisionTimerBtn.CheckedForeground = Color.PowderBlue;
+            highPrecisionTimerBtn.CheckedOutlineColor = Color.PowderBlue;
+            highPrecisionTimerBtn.ForeColor = Color.PowderBlue;
+            highPrecisionTimerBtn.Location = new Point(518, 208);
+            highPrecisionTimerBtn.Name = "highPrecisionTimerBtn";
+            highPrecisionTimerBtn.OutlineStyle = true;
+            highPrecisionTimerBtn.OutlineThickness = 1F;
+            highPrecisionTimerBtn.ShowSymbols = true;
+            highPrecisionTimerBtn.Size = new Size(39, 20);
+            highPrecisionTimerBtn.TabIndex = 50;
+            highPrecisionTimerBtn.ThumbSizeModifier = new Size(0, 0);
+            highPrecisionTimerBtn.UncheckedBackground = Color.Black;
+            highPrecisionTimerBtn.UncheckedForeground = Color.Red;
+            highPrecisionTimerBtn.UncheckedOutlineColor = Color.Red;
+            highPrecisionTimerBtn.CheckedChanged += highPrecisionTimerBtn_CheckedChanged;
             // 
             // csrssPriorityBtn
             // 
@@ -1106,45 +1114,45 @@ namespace freetweaks_v1._3
             csrssPriorityBtn.CheckedChanged += csrssPriorityBtn_CheckedChanged;
             csrssPriorityBtn.Click += csrssPriorityBtn_CheckedChanged;
             // 
-            // cuiSwitch11
+            // audioIrqBoostBtn
+            //
+            audioIrqBoostBtn.Checked = false;
+            audioIrqBoostBtn.CheckedBackground = Color.Black;
+            audioIrqBoostBtn.CheckedForeground = Color.PowderBlue;
+            audioIrqBoostBtn.CheckedOutlineColor = Color.PowderBlue;
+            audioIrqBoostBtn.ForeColor = Color.PowderBlue;
+            audioIrqBoostBtn.Location = new Point(170, 249);
+            audioIrqBoostBtn.Name = "audioIrqBoostBtn";
+            audioIrqBoostBtn.OutlineStyle = true;
+            audioIrqBoostBtn.OutlineThickness = 1F;
+            audioIrqBoostBtn.ShowSymbols = true;
+            audioIrqBoostBtn.Size = new Size(39, 20);
+            audioIrqBoostBtn.TabIndex = 48;
+            audioIrqBoostBtn.ThumbSizeModifier = new Size(0, 0);
+            audioIrqBoostBtn.UncheckedBackground = Color.Black;
+            audioIrqBoostBtn.UncheckedForeground = Color.Red;
+            audioIrqBoostBtn.UncheckedOutlineColor = Color.Red;
+            audioIrqBoostBtn.CheckedChanged += audioIrqBoostBtn_CheckedChanged;
             // 
-            cuiSwitch11.Checked = false;
-            cuiSwitch11.CheckedBackground = Color.Black;
-            cuiSwitch11.CheckedForeground = Color.PowderBlue;
-            cuiSwitch11.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch11.Enabled = false;
-            cuiSwitch11.ForeColor = Color.PowderBlue;
-            cuiSwitch11.Location = new Point(170, 249);
-            cuiSwitch11.Name = "cuiSwitch11";
-            cuiSwitch11.OutlineStyle = true;
-            cuiSwitch11.OutlineThickness = 1F;
-            cuiSwitch11.ShowSymbols = true;
-            cuiSwitch11.Size = new Size(39, 20);
-            cuiSwitch11.TabIndex = 48;
-            cuiSwitch11.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch11.UncheckedBackground = Color.Black;
-            cuiSwitch11.UncheckedForeground = Color.Red;
-            cuiSwitch11.UncheckedOutlineColor = Color.Red;
-            // 
-            // cuiSwitch12
-            // 
-            cuiSwitch12.Checked = false;
-            cuiSwitch12.CheckedBackground = Color.Black;
-            cuiSwitch12.CheckedForeground = Color.PowderBlue;
-            cuiSwitch12.CheckedOutlineColor = Color.PowderBlue;
-            cuiSwitch12.Enabled = false;
-            cuiSwitch12.ForeColor = Color.PowderBlue;
-            cuiSwitch12.Location = new Point(170, 209);
-            cuiSwitch12.Name = "cuiSwitch12";
-            cuiSwitch12.OutlineStyle = true;
-            cuiSwitch12.OutlineThickness = 1F;
-            cuiSwitch12.ShowSymbols = true;
-            cuiSwitch12.Size = new Size(39, 20);
-            cuiSwitch12.TabIndex = 47;
-            cuiSwitch12.ThumbSizeModifier = new Size(0, 0);
-            cuiSwitch12.UncheckedBackground = Color.Black;
-            cuiSwitch12.UncheckedForeground = Color.Red;
-            cuiSwitch12.UncheckedOutlineColor = Color.Red;
+            // clockIrqBoostBtn
+            //
+            clockIrqBoostBtn.Checked = false;
+            clockIrqBoostBtn.CheckedBackground = Color.Black;
+            clockIrqBoostBtn.CheckedForeground = Color.PowderBlue;
+            clockIrqBoostBtn.CheckedOutlineColor = Color.PowderBlue;
+            clockIrqBoostBtn.ForeColor = Color.PowderBlue;
+            clockIrqBoostBtn.Location = new Point(170, 209);
+            clockIrqBoostBtn.Name = "clockIrqBoostBtn";
+            clockIrqBoostBtn.OutlineStyle = true;
+            clockIrqBoostBtn.OutlineThickness = 1F;
+            clockIrqBoostBtn.ShowSymbols = true;
+            clockIrqBoostBtn.Size = new Size(39, 20);
+            clockIrqBoostBtn.TabIndex = 47;
+            clockIrqBoostBtn.ThumbSizeModifier = new Size(0, 0);
+            clockIrqBoostBtn.UncheckedBackground = Color.Black;
+            clockIrqBoostBtn.UncheckedForeground = Color.Red;
+            clockIrqBoostBtn.UncheckedOutlineColor = Color.Red;
+            clockIrqBoostBtn.CheckedChanged += clockIrqBoostBtn_CheckedChanged;
             // 
             // coreParkingLabel
             // 
@@ -1766,6 +1774,14 @@ namespace freetweaks_v1._3
             windowsPanel2.Controls.Add(cuiSwitch25);
             windowsPanel2.Controls.Add(label26);
             windowsPanel2.Controls.Add(cuiSwitch26);
+            windowsPanel2.Controls.Add(gameDvrLabel);
+            windowsPanel2.Controls.Add(gameDvrBtn);
+            windowsPanel2.Controls.Add(smbSessionLabel);
+            windowsPanel2.Controls.Add(smbSessionBtn);
+            windowsPanel2.Controls.Add(powerThrottlingLabel);
+            windowsPanel2.Controls.Add(powerThrottlingBtn);
+            windowsPanel2.Controls.Add(systemResponsivenessLabel);
+            windowsPanel2.Controls.Add(systemResponsivenessBtn);
             windowsPanel2.Controls.Add(label27);
             windowsPanel2.Location = new Point(183, 26);
             windowsPanel2.Name = "windowsPanel2";
@@ -1793,7 +1809,7 @@ namespace freetweaks_v1._3
             cuiButton4.ImageExpand = new Point(0, 0);
             cuiButton4.ImageOffset = new Point(0, 0);
             cuiButton4.ImageTint = Color.White;
-            cuiButton4.Location = new Point(370, 198);
+            cuiButton4.Location = new Point(370, 293);
             cuiButton4.Name = "cuiButton4";
             cuiButton4.NormalBackground = Color.FromArgb(18, 18, 18);
             cuiButton4.NormalOutline = Color.PowderBlue;
@@ -1829,7 +1845,7 @@ namespace freetweaks_v1._3
             cuiButton3.ImageExpand = new Point(0, 0);
             cuiButton3.ImageOffset = new Point(0, 0);
             cuiButton3.ImageTint = Color.White;
-            cuiButton3.Location = new Point(23, 198);
+            cuiButton3.Location = new Point(23, 293);
             cuiButton3.Name = "cuiButton3";
             cuiButton3.NormalBackground = Color.FromArgb(18, 18, 18);
             cuiButton3.NormalOutline = Color.PowderBlue;
@@ -2103,6 +2119,130 @@ namespace freetweaks_v1._3
             cuiSwitch26.UncheckedBackground = Color.Black;
             cuiSwitch26.UncheckedForeground = Color.Red;
             cuiSwitch26.UncheckedOutlineColor = Color.Red;
+            //
+            // gameDvrLabel
+            //
+            gameDvrLabel.AutoSize = true;
+            gameDvrLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gameDvrLabel.ForeColor = Color.White;
+            gameDvrLabel.Location = new Point(21, 205);
+            gameDvrLabel.Name = "gameDvrLabel";
+            gameDvrLabel.Size = new Size(118, 18);
+            gameDvrLabel.TabIndex = 45;
+            gameDvrLabel.Text = "Xbox Game DVR";
+            //
+            // gameDvrBtn
+            //
+            gameDvrBtn.Checked = false;
+            gameDvrBtn.CheckedBackground = Color.Black;
+            gameDvrBtn.CheckedForeground = Color.PowderBlue;
+            gameDvrBtn.CheckedOutlineColor = Color.PowderBlue;
+            gameDvrBtn.ForeColor = Color.PowderBlue;
+            gameDvrBtn.Location = new Point(172, 205);
+            gameDvrBtn.Name = "gameDvrBtn";
+            gameDvrBtn.OutlineStyle = true;
+            gameDvrBtn.OutlineThickness = 1F;
+            gameDvrBtn.ShowSymbols = true;
+            gameDvrBtn.Size = new Size(39, 20);
+            gameDvrBtn.TabIndex = 45;
+            gameDvrBtn.ThumbSizeModifier = new Size(0, 0);
+            gameDvrBtn.UncheckedBackground = Color.Black;
+            gameDvrBtn.UncheckedForeground = Color.Red;
+            gameDvrBtn.UncheckedOutlineColor = Color.Red;
+            gameDvrBtn.CheckedChanged += gameDvrBtn_CheckedChanged;
+            //
+            // smbSessionLabel
+            //
+            smbSessionLabel.AutoSize = true;
+            smbSessionLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            smbSessionLabel.ForeColor = Color.White;
+            smbSessionLabel.Location = new Point(370, 205);
+            smbSessionLabel.Name = "smbSessionLabel";
+            smbSessionLabel.Size = new Size(101, 18);
+            smbSessionLabel.TabIndex = 46;
+            smbSessionLabel.Text = "SMB Session";
+            //
+            // smbSessionBtn
+            //
+            smbSessionBtn.Checked = false;
+            smbSessionBtn.CheckedBackground = Color.Black;
+            smbSessionBtn.CheckedForeground = Color.PowderBlue;
+            smbSessionBtn.CheckedOutlineColor = Color.PowderBlue;
+            smbSessionBtn.ForeColor = Color.PowderBlue;
+            smbSessionBtn.Location = new Point(519, 205);
+            smbSessionBtn.Name = "smbSessionBtn";
+            smbSessionBtn.OutlineStyle = true;
+            smbSessionBtn.OutlineThickness = 1F;
+            smbSessionBtn.ShowSymbols = true;
+            smbSessionBtn.Size = new Size(39, 20);
+            smbSessionBtn.TabIndex = 46;
+            smbSessionBtn.ThumbSizeModifier = new Size(0, 0);
+            smbSessionBtn.UncheckedBackground = Color.Black;
+            smbSessionBtn.UncheckedForeground = Color.Red;
+            smbSessionBtn.UncheckedOutlineColor = Color.Red;
+            smbSessionBtn.CheckedChanged += smbSessionBtn_CheckedChanged;
+            //
+            // powerThrottlingLabel
+            //
+            powerThrottlingLabel.AutoSize = true;
+            powerThrottlingLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            powerThrottlingLabel.ForeColor = Color.White;
+            powerThrottlingLabel.Location = new Point(21, 249);
+            powerThrottlingLabel.Name = "powerThrottlingLabel";
+            powerThrottlingLabel.Size = new Size(125, 18);
+            powerThrottlingLabel.TabIndex = 47;
+            powerThrottlingLabel.Text = "Power Throttling";
+            //
+            // powerThrottlingBtn
+            //
+            powerThrottlingBtn.Checked = false;
+            powerThrottlingBtn.CheckedBackground = Color.Black;
+            powerThrottlingBtn.CheckedForeground = Color.PowderBlue;
+            powerThrottlingBtn.CheckedOutlineColor = Color.PowderBlue;
+            powerThrottlingBtn.ForeColor = Color.PowderBlue;
+            powerThrottlingBtn.Location = new Point(172, 249);
+            powerThrottlingBtn.Name = "powerThrottlingBtn";
+            powerThrottlingBtn.OutlineStyle = true;
+            powerThrottlingBtn.OutlineThickness = 1F;
+            powerThrottlingBtn.ShowSymbols = true;
+            powerThrottlingBtn.Size = new Size(39, 20);
+            powerThrottlingBtn.TabIndex = 47;
+            powerThrottlingBtn.ThumbSizeModifier = new Size(0, 0);
+            powerThrottlingBtn.UncheckedBackground = Color.Black;
+            powerThrottlingBtn.UncheckedForeground = Color.Red;
+            powerThrottlingBtn.UncheckedOutlineColor = Color.Red;
+            powerThrottlingBtn.CheckedChanged += powerThrottlingBtn_CheckedChanged;
+            //
+            // systemResponsivenessLabel
+            //
+            systemResponsivenessLabel.AutoSize = true;
+            systemResponsivenessLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            systemResponsivenessLabel.ForeColor = Color.White;
+            systemResponsivenessLabel.Location = new Point(370, 249);
+            systemResponsivenessLabel.Name = "systemResponsivenessLabel";
+            systemResponsivenessLabel.Size = new Size(161, 18);
+            systemResponsivenessLabel.TabIndex = 48;
+            systemResponsivenessLabel.Text = "System Responsiveness";
+            //
+            // systemResponsivenessBtn
+            //
+            systemResponsivenessBtn.Checked = false;
+            systemResponsivenessBtn.CheckedBackground = Color.Black;
+            systemResponsivenessBtn.CheckedForeground = Color.PowderBlue;
+            systemResponsivenessBtn.CheckedOutlineColor = Color.PowderBlue;
+            systemResponsivenessBtn.ForeColor = Color.PowderBlue;
+            systemResponsivenessBtn.Location = new Point(519, 249);
+            systemResponsivenessBtn.Name = "systemResponsivenessBtn";
+            systemResponsivenessBtn.OutlineStyle = true;
+            systemResponsivenessBtn.OutlineThickness = 1F;
+            systemResponsivenessBtn.ShowSymbols = true;
+            systemResponsivenessBtn.Size = new Size(39, 20);
+            systemResponsivenessBtn.TabIndex = 48;
+            systemResponsivenessBtn.ThumbSizeModifier = new Size(0, 0);
+            systemResponsivenessBtn.UncheckedBackground = Color.Black;
+            systemResponsivenessBtn.UncheckedForeground = Color.Red;
+            systemResponsivenessBtn.UncheckedOutlineColor = Color.Red;
+            systemResponsivenessBtn.CheckedChanged += systemResponsivenessBtn_CheckedChanged;
             // 
             // label27
             // 
@@ -2233,16 +2373,16 @@ namespace freetweaks_v1._3
         private Label amdLabel;
         private Label nvidiaLabel;
         private EventHandler corePanel_Load;
-        private Label label18;
-        private cuiSwitch cuiSwitch13;
-        private Label label9;
+        private Label schedulerClockRateLabel;
+        private cuiSwitch schedulerClockRateBtn;
+        private Label highPrecisionTimerLabel;
         private Label csrssPriorityLabel;
-        private Label label13;
-        private Label label14;
-        private cuiSwitch cuiSwitch9;
+        private Label audioIrqBoostLabel;
+        private Label clockIrqBoostLabel;
+        private cuiSwitch highPrecisionTimerBtn;
         private cuiSwitch csrssPriorityBtn;
-        private cuiSwitch cuiSwitch11;
-        private cuiSwitch cuiSwitch12;
+        private cuiSwitch audioIrqBoostBtn;
+        private cuiSwitch clockIrqBoostBtn;
         private Label label7;
         private Label label8;
         private Label label6;
@@ -2284,5 +2424,13 @@ namespace freetweaks_v1._3
         private cuiSwitch findmydeviceBtn;
         private cuiButton cuiButton3;
         private cuiButton cuiButton4;
+        private Label gameDvrLabel;
+        private cuiSwitch gameDvrBtn;
+        private Label smbSessionLabel;
+        private cuiSwitch smbSessionBtn;
+        private Label powerThrottlingLabel;
+        private cuiSwitch powerThrottlingBtn;
+        private Label systemResponsivenessLabel;
+        private cuiSwitch systemResponsivenessBtn;
     }
 }

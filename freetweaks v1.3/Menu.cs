@@ -174,6 +174,10 @@ namespace freetweaks_v1._3
                 eventProcessorBtn.Checked = SystemSettings.IsEventProcessorEnabled();
                 fairShareBtn.Checked = SystemSettings.IsFairShareEnabled();
                 coreParkingBtn.Checked = SystemSettings.IsCoreParkingEnabled();
+                clockIrqBoostBtn.Checked = SystemSettings.IsClockIrqBoostEnabled();
+                audioIrqBoostBtn.Checked = SystemSettings.IsAudioIrqBoostEnabled();
+                highPrecisionTimerBtn.Checked = SystemSettings.IsHighPrecisionTimerEnabled();
+                schedulerClockRateBtn.Checked = SystemSettings.IsSchedulerClockRateEnabled();
 
                 // ----- GPU toggles (staré už existující) -----
                 energyDriverBtn.Checked = SystemSettings.IsEnergyDriverEnabled();
@@ -211,6 +215,18 @@ namespace freetweaks_v1._3
 
                 // ----- NEW TOGGLE: Automatic Maintenance (cuiSwitch27) -----
                 cuiSwitch27.Checked = SystemSettings.IsAutomaticMaintenanceEnabled();
+
+                // ----- NEW TOGGLE: Xbox Game DVR -----
+                gameDvrBtn.Checked = SystemSettings.IsGameDvrEnabled();
+
+                // ----- NEW TOGGLE: SMB Session -----
+                smbSessionBtn.Checked = SystemSettings.IsSmbSessionEnabled();
+
+                // ----- NEW TOGGLE: Power Throttling -----
+                powerThrottlingBtn.Checked = SystemSettings.IsPowerThrottlingEnabled();
+
+                // ----- NEW TOGGLE: System Responsiveness -----
+                systemResponsivenessBtn.Checked = SystemSettings.IsSystemResponsivenessEnabled();
 
                 bool isFindMyDeviceDisabled = SystemSettings.IsFindMyDeviceDisabled();
                 findmydeviceBtn.Checked = !isFindMyDeviceDisabled;
@@ -501,6 +517,74 @@ namespace freetweaks_v1._3
                 coreParkingBtn.CheckedChanged += coreParkingBtn_CheckedChanged;
 
                 MessageBox.Show("Failed to change setting for CoreParking.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void clockIrqBoostBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = clockIrqBoostBtn.Checked;
+            SystemSettings.SetClockIrqBoostEnabled(desiredState);
+            bool actualState = SystemSettings.IsClockIrqBoostEnabled();
+            if (actualState != desiredState)
+            {
+                clockIrqBoostBtn.CheckedChanged -= clockIrqBoostBtn_CheckedChanged;
+                clockIrqBoostBtn.Checked = actualState;
+                clockIrqBoostBtn.CheckedChanged += clockIrqBoostBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Clock IRQ Boost.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void audioIrqBoostBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = audioIrqBoostBtn.Checked;
+            SystemSettings.SetAudioIrqBoostEnabled(desiredState);
+            bool actualState = SystemSettings.IsAudioIrqBoostEnabled();
+            if (actualState != desiredState)
+            {
+                audioIrqBoostBtn.CheckedChanged -= audioIrqBoostBtn_CheckedChanged;
+                audioIrqBoostBtn.Checked = actualState;
+                audioIrqBoostBtn.CheckedChanged += audioIrqBoostBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Audio IRQ Boost.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void highPrecisionTimerBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = highPrecisionTimerBtn.Checked;
+            SystemSettings.SetHighPrecisionTimerEnabled(desiredState);
+            bool actualState = SystemSettings.IsHighPrecisionTimerEnabled();
+            if (actualState != desiredState)
+            {
+                highPrecisionTimerBtn.CheckedChanged -= highPrecisionTimerBtn_CheckedChanged;
+                highPrecisionTimerBtn.Checked = actualState;
+                highPrecisionTimerBtn.CheckedChanged += highPrecisionTimerBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for High-Precision Timer.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void schedulerClockRateBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = schedulerClockRateBtn.Checked;
+            SystemSettings.SetSchedulerClockRateEnabled(desiredState);
+            bool actualState = SystemSettings.IsSchedulerClockRateEnabled();
+            if (actualState != desiredState)
+            {
+                schedulerClockRateBtn.CheckedChanged -= schedulerClockRateBtn_CheckedChanged;
+                schedulerClockRateBtn.Checked = actualState;
+                schedulerClockRateBtn.CheckedChanged += schedulerClockRateBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Scheduler Clock Rate.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -1061,6 +1145,66 @@ namespace freetweaks_v1._3
                 settingsSyncingBtn.CheckedChanged += settingsSyncingBtn_CheckedChanged;
 
                 MessageBox.Show("Failed to apply Settings Syncing settings.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gameDvrBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = gameDvrBtn.Checked;
+            SystemSettings.SetGameDvrEnabled(desiredState);
+            bool actualState = SystemSettings.IsGameDvrEnabled();
+            if (actualState != desiredState)
+            {
+                gameDvrBtn.CheckedChanged -= gameDvrBtn_CheckedChanged;
+                gameDvrBtn.Checked = actualState;
+                gameDvrBtn.CheckedChanged += gameDvrBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for Xbox Game DVR.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void smbSessionBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = smbSessionBtn.Checked;
+            SystemSettings.SetSmbSessionEnabled(desiredState);
+            bool actualState = SystemSettings.IsSmbSessionEnabled();
+            if (actualState != desiredState)
+            {
+                smbSessionBtn.CheckedChanged -= smbSessionBtn_CheckedChanged;
+                smbSessionBtn.Checked = actualState;
+                smbSessionBtn.CheckedChanged += smbSessionBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for SMB Session.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void powerThrottlingBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = powerThrottlingBtn.Checked;
+            SystemSettings.SetPowerThrottlingEnabled(desiredState);
+            bool actualState = SystemSettings.IsPowerThrottlingEnabled();
+            if (actualState != desiredState)
+            {
+                powerThrottlingBtn.CheckedChanged -= powerThrottlingBtn_CheckedChanged;
+                powerThrottlingBtn.Checked = actualState;
+                powerThrottlingBtn.CheckedChanged += powerThrottlingBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for Power Throttling.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void systemResponsivenessBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = systemResponsivenessBtn.Checked;
+            SystemSettings.SetSystemResponsivenessEnabled(desiredState);
+            bool actualState = SystemSettings.IsSystemResponsivenessEnabled();
+            if (actualState != desiredState)
+            {
+                systemResponsivenessBtn.CheckedChanged -= systemResponsivenessBtn_CheckedChanged;
+                systemResponsivenessBtn.Checked = actualState;
+                systemResponsivenessBtn.CheckedChanged += systemResponsivenessBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for System Responsiveness.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

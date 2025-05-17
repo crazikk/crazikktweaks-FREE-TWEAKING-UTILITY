@@ -733,6 +733,81 @@ namespace freetweaks_v1._3
             WriteRegistryValue(RegistryHive.LocalMachine, CoreParkingRegistryPath, CoreParkingValueName, v, RegistryValueKind.DWord);
         }
 
+        // 6) clockIrqBoostBtn
+        private const string PriorityControlRegistryPath = @"SYSTEM\CurrentControlSet\Control\PriorityControl";
+        private const string ClockIrqPriorityValueName = "IRQ8Priority";
+
+        public static bool IsClockIrqBoostEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, PriorityControlRegistryPath, ClockIrqPriorityValueName, out int val, 0))
+            {
+                return val == 1;
+            }
+            return false;
+        }
+
+        public static void SetClockIrqBoostEnabled(bool enabled)
+        {
+            int v = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, PriorityControlRegistryPath, ClockIrqPriorityValueName, v, RegistryValueKind.DWord);
+        }
+
+        // 7) audioIrqBoostBtn
+        private const string AudioIrqPriorityValueName = "IRQ16Priority";
+
+        public static bool IsAudioIrqBoostEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, PriorityControlRegistryPath, AudioIrqPriorityValueName, out int val, 0))
+            {
+                return val == 2;
+            }
+            return false;
+        }
+
+        public static void SetAudioIrqBoostEnabled(bool enabled)
+        {
+            int v = enabled ? 2 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, PriorityControlRegistryPath, AudioIrqPriorityValueName, v, RegistryValueKind.DWord);
+        }
+
+        // 8) highPrecisionTimerBtn
+        private const string HighPrecisionTimerRegPath = @"SYSTEM\CurrentControlSet\Control\Power";
+        private const string HighPrecisionTimerValueName = "CoalescingTimerInterval";
+
+        public static bool IsHighPrecisionTimerEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, HighPrecisionTimerRegPath, HighPrecisionTimerValueName, out int val, 0))
+            {
+                return val == 1;
+            }
+            return false;
+        }
+
+        public static void SetHighPrecisionTimerEnabled(bool enabled)
+        {
+            int v = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, HighPrecisionTimerRegPath, HighPrecisionTimerValueName, v, RegistryValueKind.DWord);
+        }
+
+        // 9) schedulerClockRateBtn
+        private const string SchedulerClockRateRegPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games";
+        private const string SchedulerClockRateValueName = "Clock Rate";
+
+        public static bool IsSchedulerClockRateEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, SchedulerClockRateRegPath, SchedulerClockRateValueName, out int val, 0))
+            {
+                return val == 10000;
+            }
+            return false;
+        }
+
+        public static void SetSchedulerClockRateEnabled(bool enabled)
+        {
+            int v = enabled ? 10000 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, SchedulerClockRateRegPath, SchedulerClockRateValueName, v, RegistryValueKind.DWord);
+        }
+
         // -------------------------------------------------------------------
         // ------------- Additional GPU-related methods (Nvidia/AMD) --------
         // -------------------------------------------------------------------
@@ -1653,6 +1728,86 @@ namespace freetweaks_v1._3
         public static void SetSettingsSyncingDisabled(bool disabled)
         {
             WriteRegistryValue(RegistryHive.CurrentUser, SettingsSyncingRegistryPath, SettingsSyncingValueName, disabled ? 5 : 0, RegistryValueKind.DWord);
+        }
+
+        // -------------------------------------------------------------------
+        // ---------------------- NEW WINDOWS TOGGLES -----------------------
+        // -------------------------------------------------------------------
+
+        // Xbox Game DVR
+        private const string GameBarRegPath = @"Software\Microsoft\GameBar";
+        private const string GameConfigStoreRegPath = @"System\GameConfigStore";
+        private const string GameDvrValueName = "GameDVR_Enabled";
+
+        public static bool IsGameDvrEnabled()
+        {
+            bool ok1 = TryReadRegistryValue<int>(RegistryHive.CurrentUser, GameBarRegPath, GameDvrValueName, out int v1, 1);
+            bool ok2 = TryReadRegistryValue<int>(RegistryHive.CurrentUser, GameConfigStoreRegPath, GameDvrValueName, out int v2, 1);
+            return ok1 && ok2 && v1 == 1 && v2 == 1;
+        }
+
+        public static void SetGameDvrEnabled(bool enabled)
+        {
+            int val = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.CurrentUser, GameBarRegPath, GameDvrValueName, val, RegistryValueKind.DWord);
+            WriteRegistryValue(RegistryHive.CurrentUser, GameConfigStoreRegPath, GameDvrValueName, val, RegistryValueKind.DWord);
+        }
+
+        // SMB Session Autodisconnect
+        private const string SmbSessionRegPath = @"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters";
+        private const string SmbAutodisconnectValueName = "autodisconnect";
+
+        public static bool IsSmbSessionEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, SmbSessionRegPath, SmbAutodisconnectValueName, out int val, 15))
+            {
+                return val != unchecked((int)0xFFFFFFFF);
+            }
+            return false;
+        }
+
+        public static void SetSmbSessionEnabled(bool enabled)
+        {
+            int val = enabled ? 15 : unchecked((int)0xFFFFFFFF);
+            WriteRegistryValue(RegistryHive.LocalMachine, SmbSessionRegPath, SmbAutodisconnectValueName, val, RegistryValueKind.DWord);
+        }
+
+        // Power Throttling
+        private const string PowerThrottlingRegPath = @"SYSTEM\CurrentControlSet\Control\Power\PowerThrottling";
+        private const string PowerThrottlingOffValueName = "PowerThrottlingOff";
+
+        public static bool IsPowerThrottlingEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, PowerThrottlingRegPath, PowerThrottlingOffValueName, out int val, 0))
+            {
+                return val == 0;
+            }
+            return true;
+        }
+
+        public static void SetPowerThrottlingEnabled(bool enabled)
+        {
+            int val = enabled ? 0 : 1;
+            WriteRegistryValue(RegistryHive.LocalMachine, PowerThrottlingRegPath, PowerThrottlingOffValueName, val, RegistryValueKind.DWord);
+        }
+
+        // System Responsiveness
+        private const string SystemProfileRegPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile";
+        private const string SystemResponsivenessValueName = "SystemResponsiveness";
+
+        public static bool IsSystemResponsivenessEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, SystemProfileRegPath, SystemResponsivenessValueName, out int val, 14))
+            {
+                return val == 0;
+            }
+            return false;
+        }
+
+        public static void SetSystemResponsivenessEnabled(bool enabled)
+        {
+            int val = enabled ? 0 : 14;
+            WriteRegistryValue(RegistryHive.LocalMachine, SystemProfileRegPath, SystemResponsivenessValueName, val, RegistryValueKind.DWord);
         }
 
         public static void ClearWindowsTemp()
