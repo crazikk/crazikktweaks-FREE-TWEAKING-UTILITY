@@ -153,6 +153,14 @@ namespace freetweaks_v1._3
             label26 = new Label();
             cuiSwitch26 = new cuiSwitch();
             label27 = new Label();
+            gameDvrLabel = new Label();
+            gameDvrBtn = new cuiSwitch();
+            smbSessionLabel = new Label();
+            smbSessionBtn = new cuiSwitch();
+            powerThrottlingLabel = new Label();
+            powerThrottlingBtn = new cuiSwitch();
+            systemResponsivenessLabel = new Label();
+            systemResponsivenessBtn = new cuiSwitch();
             sidePanel.SuspendLayout();
             windowsPanel.SuspendLayout();
             cpuPanel.SuspendLayout();
@@ -1766,6 +1774,14 @@ namespace freetweaks_v1._3
             windowsPanel2.Controls.Add(cuiSwitch25);
             windowsPanel2.Controls.Add(label26);
             windowsPanel2.Controls.Add(cuiSwitch26);
+            windowsPanel2.Controls.Add(gameDvrLabel);
+            windowsPanel2.Controls.Add(gameDvrBtn);
+            windowsPanel2.Controls.Add(smbSessionLabel);
+            windowsPanel2.Controls.Add(smbSessionBtn);
+            windowsPanel2.Controls.Add(powerThrottlingLabel);
+            windowsPanel2.Controls.Add(powerThrottlingBtn);
+            windowsPanel2.Controls.Add(systemResponsivenessLabel);
+            windowsPanel2.Controls.Add(systemResponsivenessBtn);
             windowsPanel2.Controls.Add(label27);
             windowsPanel2.Location = new Point(183, 26);
             windowsPanel2.Name = "windowsPanel2";
@@ -1793,7 +1809,7 @@ namespace freetweaks_v1._3
             cuiButton4.ImageExpand = new Point(0, 0);
             cuiButton4.ImageOffset = new Point(0, 0);
             cuiButton4.ImageTint = Color.White;
-            cuiButton4.Location = new Point(370, 198);
+            cuiButton4.Location = new Point(370, 293);
             cuiButton4.Name = "cuiButton4";
             cuiButton4.NormalBackground = Color.FromArgb(18, 18, 18);
             cuiButton4.NormalOutline = Color.PowderBlue;
@@ -1829,7 +1845,7 @@ namespace freetweaks_v1._3
             cuiButton3.ImageExpand = new Point(0, 0);
             cuiButton3.ImageOffset = new Point(0, 0);
             cuiButton3.ImageTint = Color.White;
-            cuiButton3.Location = new Point(23, 198);
+            cuiButton3.Location = new Point(23, 293);
             cuiButton3.Name = "cuiButton3";
             cuiButton3.NormalBackground = Color.FromArgb(18, 18, 18);
             cuiButton3.NormalOutline = Color.PowderBlue;
@@ -2103,6 +2119,130 @@ namespace freetweaks_v1._3
             cuiSwitch26.UncheckedBackground = Color.Black;
             cuiSwitch26.UncheckedForeground = Color.Red;
             cuiSwitch26.UncheckedOutlineColor = Color.Red;
+            //
+            // gameDvrLabel
+            //
+            gameDvrLabel.AutoSize = true;
+            gameDvrLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gameDvrLabel.ForeColor = Color.White;
+            gameDvrLabel.Location = new Point(21, 205);
+            gameDvrLabel.Name = "gameDvrLabel";
+            gameDvrLabel.Size = new Size(118, 18);
+            gameDvrLabel.TabIndex = 45;
+            gameDvrLabel.Text = "Xbox Game DVR";
+            //
+            // gameDvrBtn
+            //
+            gameDvrBtn.Checked = false;
+            gameDvrBtn.CheckedBackground = Color.Black;
+            gameDvrBtn.CheckedForeground = Color.PowderBlue;
+            gameDvrBtn.CheckedOutlineColor = Color.PowderBlue;
+            gameDvrBtn.ForeColor = Color.PowderBlue;
+            gameDvrBtn.Location = new Point(172, 205);
+            gameDvrBtn.Name = "gameDvrBtn";
+            gameDvrBtn.OutlineStyle = true;
+            gameDvrBtn.OutlineThickness = 1F;
+            gameDvrBtn.ShowSymbols = true;
+            gameDvrBtn.Size = new Size(39, 20);
+            gameDvrBtn.TabIndex = 45;
+            gameDvrBtn.ThumbSizeModifier = new Size(0, 0);
+            gameDvrBtn.UncheckedBackground = Color.Black;
+            gameDvrBtn.UncheckedForeground = Color.Red;
+            gameDvrBtn.UncheckedOutlineColor = Color.Red;
+            gameDvrBtn.CheckedChanged += gameDvrBtn_CheckedChanged;
+            //
+            // smbSessionLabel
+            //
+            smbSessionLabel.AutoSize = true;
+            smbSessionLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            smbSessionLabel.ForeColor = Color.White;
+            smbSessionLabel.Location = new Point(370, 205);
+            smbSessionLabel.Name = "smbSessionLabel";
+            smbSessionLabel.Size = new Size(101, 18);
+            smbSessionLabel.TabIndex = 46;
+            smbSessionLabel.Text = "SMB Session";
+            //
+            // smbSessionBtn
+            //
+            smbSessionBtn.Checked = false;
+            smbSessionBtn.CheckedBackground = Color.Black;
+            smbSessionBtn.CheckedForeground = Color.PowderBlue;
+            smbSessionBtn.CheckedOutlineColor = Color.PowderBlue;
+            smbSessionBtn.ForeColor = Color.PowderBlue;
+            smbSessionBtn.Location = new Point(519, 205);
+            smbSessionBtn.Name = "smbSessionBtn";
+            smbSessionBtn.OutlineStyle = true;
+            smbSessionBtn.OutlineThickness = 1F;
+            smbSessionBtn.ShowSymbols = true;
+            smbSessionBtn.Size = new Size(39, 20);
+            smbSessionBtn.TabIndex = 46;
+            smbSessionBtn.ThumbSizeModifier = new Size(0, 0);
+            smbSessionBtn.UncheckedBackground = Color.Black;
+            smbSessionBtn.UncheckedForeground = Color.Red;
+            smbSessionBtn.UncheckedOutlineColor = Color.Red;
+            smbSessionBtn.CheckedChanged += smbSessionBtn_CheckedChanged;
+            //
+            // powerThrottlingLabel
+            //
+            powerThrottlingLabel.AutoSize = true;
+            powerThrottlingLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            powerThrottlingLabel.ForeColor = Color.White;
+            powerThrottlingLabel.Location = new Point(21, 249);
+            powerThrottlingLabel.Name = "powerThrottlingLabel";
+            powerThrottlingLabel.Size = new Size(125, 18);
+            powerThrottlingLabel.TabIndex = 47;
+            powerThrottlingLabel.Text = "Power Throttling";
+            //
+            // powerThrottlingBtn
+            //
+            powerThrottlingBtn.Checked = false;
+            powerThrottlingBtn.CheckedBackground = Color.Black;
+            powerThrottlingBtn.CheckedForeground = Color.PowderBlue;
+            powerThrottlingBtn.CheckedOutlineColor = Color.PowderBlue;
+            powerThrottlingBtn.ForeColor = Color.PowderBlue;
+            powerThrottlingBtn.Location = new Point(172, 249);
+            powerThrottlingBtn.Name = "powerThrottlingBtn";
+            powerThrottlingBtn.OutlineStyle = true;
+            powerThrottlingBtn.OutlineThickness = 1F;
+            powerThrottlingBtn.ShowSymbols = true;
+            powerThrottlingBtn.Size = new Size(39, 20);
+            powerThrottlingBtn.TabIndex = 47;
+            powerThrottlingBtn.ThumbSizeModifier = new Size(0, 0);
+            powerThrottlingBtn.UncheckedBackground = Color.Black;
+            powerThrottlingBtn.UncheckedForeground = Color.Red;
+            powerThrottlingBtn.UncheckedOutlineColor = Color.Red;
+            powerThrottlingBtn.CheckedChanged += powerThrottlingBtn_CheckedChanged;
+            //
+            // systemResponsivenessLabel
+            //
+            systemResponsivenessLabel.AutoSize = true;
+            systemResponsivenessLabel.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            systemResponsivenessLabel.ForeColor = Color.White;
+            systemResponsivenessLabel.Location = new Point(370, 249);
+            systemResponsivenessLabel.Name = "systemResponsivenessLabel";
+            systemResponsivenessLabel.Size = new Size(161, 18);
+            systemResponsivenessLabel.TabIndex = 48;
+            systemResponsivenessLabel.Text = "System Responsiveness";
+            //
+            // systemResponsivenessBtn
+            //
+            systemResponsivenessBtn.Checked = false;
+            systemResponsivenessBtn.CheckedBackground = Color.Black;
+            systemResponsivenessBtn.CheckedForeground = Color.PowderBlue;
+            systemResponsivenessBtn.CheckedOutlineColor = Color.PowderBlue;
+            systemResponsivenessBtn.ForeColor = Color.PowderBlue;
+            systemResponsivenessBtn.Location = new Point(519, 249);
+            systemResponsivenessBtn.Name = "systemResponsivenessBtn";
+            systemResponsivenessBtn.OutlineStyle = true;
+            systemResponsivenessBtn.OutlineThickness = 1F;
+            systemResponsivenessBtn.ShowSymbols = true;
+            systemResponsivenessBtn.Size = new Size(39, 20);
+            systemResponsivenessBtn.TabIndex = 48;
+            systemResponsivenessBtn.ThumbSizeModifier = new Size(0, 0);
+            systemResponsivenessBtn.UncheckedBackground = Color.Black;
+            systemResponsivenessBtn.UncheckedForeground = Color.Red;
+            systemResponsivenessBtn.UncheckedOutlineColor = Color.Red;
+            systemResponsivenessBtn.CheckedChanged += systemResponsivenessBtn_CheckedChanged;
             // 
             // label27
             // 
@@ -2284,5 +2424,13 @@ namespace freetweaks_v1._3
         private cuiSwitch findmydeviceBtn;
         private cuiButton cuiButton3;
         private cuiButton cuiButton4;
+        private Label gameDvrLabel;
+        private cuiSwitch gameDvrBtn;
+        private Label smbSessionLabel;
+        private cuiSwitch smbSessionBtn;
+        private Label powerThrottlingLabel;
+        private cuiSwitch powerThrottlingBtn;
+        private Label systemResponsivenessLabel;
+        private cuiSwitch systemResponsivenessBtn;
     }
 }

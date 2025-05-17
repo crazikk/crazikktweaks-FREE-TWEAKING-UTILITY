@@ -212,6 +212,18 @@ namespace freetweaks_v1._3
                 // ----- NEW TOGGLE: Automatic Maintenance (cuiSwitch27) -----
                 cuiSwitch27.Checked = SystemSettings.IsAutomaticMaintenanceEnabled();
 
+                // ----- NEW TOGGLE: Xbox Game DVR -----
+                gameDvrBtn.Checked = SystemSettings.IsGameDvrEnabled();
+
+                // ----- NEW TOGGLE: SMB Session -----
+                smbSessionBtn.Checked = SystemSettings.IsSmbSessionEnabled();
+
+                // ----- NEW TOGGLE: Power Throttling -----
+                powerThrottlingBtn.Checked = SystemSettings.IsPowerThrottlingEnabled();
+
+                // ----- NEW TOGGLE: System Responsiveness -----
+                systemResponsivenessBtn.Checked = SystemSettings.IsSystemResponsivenessEnabled();
+
                 bool isFindMyDeviceDisabled = SystemSettings.IsFindMyDeviceDisabled();
                 findmydeviceBtn.Checked = !isFindMyDeviceDisabled;
 
@@ -1061,6 +1073,66 @@ namespace freetweaks_v1._3
                 settingsSyncingBtn.CheckedChanged += settingsSyncingBtn_CheckedChanged;
 
                 MessageBox.Show("Failed to apply Settings Syncing settings.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gameDvrBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = gameDvrBtn.Checked;
+            SystemSettings.SetGameDvrEnabled(desiredState);
+            bool actualState = SystemSettings.IsGameDvrEnabled();
+            if (actualState != desiredState)
+            {
+                gameDvrBtn.CheckedChanged -= gameDvrBtn_CheckedChanged;
+                gameDvrBtn.Checked = actualState;
+                gameDvrBtn.CheckedChanged += gameDvrBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for Xbox Game DVR.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void smbSessionBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = smbSessionBtn.Checked;
+            SystemSettings.SetSmbSessionEnabled(desiredState);
+            bool actualState = SystemSettings.IsSmbSessionEnabled();
+            if (actualState != desiredState)
+            {
+                smbSessionBtn.CheckedChanged -= smbSessionBtn_CheckedChanged;
+                smbSessionBtn.Checked = actualState;
+                smbSessionBtn.CheckedChanged += smbSessionBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for SMB Session.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void powerThrottlingBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = powerThrottlingBtn.Checked;
+            SystemSettings.SetPowerThrottlingEnabled(desiredState);
+            bool actualState = SystemSettings.IsPowerThrottlingEnabled();
+            if (actualState != desiredState)
+            {
+                powerThrottlingBtn.CheckedChanged -= powerThrottlingBtn_CheckedChanged;
+                powerThrottlingBtn.Checked = actualState;
+                powerThrottlingBtn.CheckedChanged += powerThrottlingBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for Power Throttling.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void systemResponsivenessBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = systemResponsivenessBtn.Checked;
+            SystemSettings.SetSystemResponsivenessEnabled(desiredState);
+            bool actualState = SystemSettings.IsSystemResponsivenessEnabled();
+            if (actualState != desiredState)
+            {
+                systemResponsivenessBtn.CheckedChanged -= systemResponsivenessBtn_CheckedChanged;
+                systemResponsivenessBtn.Checked = actualState;
+                systemResponsivenessBtn.CheckedChanged += systemResponsivenessBtn_CheckedChanged;
+                MessageBox.Show("Failed to change setting for System Responsiveness.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
