@@ -733,6 +733,81 @@ namespace freetweaks_v1._3
             WriteRegistryValue(RegistryHive.LocalMachine, CoreParkingRegistryPath, CoreParkingValueName, v, RegistryValueKind.DWord);
         }
 
+        // 6) clockIrqBoostBtn
+        private const string PriorityControlRegistryPath = @"SYSTEM\CurrentControlSet\Control\PriorityControl";
+        private const string ClockIrqPriorityValueName = "IRQ8Priority";
+
+        public static bool IsClockIrqBoostEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, PriorityControlRegistryPath, ClockIrqPriorityValueName, out int val, 0))
+            {
+                return val == 1;
+            }
+            return false;
+        }
+
+        public static void SetClockIrqBoostEnabled(bool enabled)
+        {
+            int v = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, PriorityControlRegistryPath, ClockIrqPriorityValueName, v, RegistryValueKind.DWord);
+        }
+
+        // 7) audioIrqBoostBtn
+        private const string AudioIrqPriorityValueName = "IRQ16Priority";
+
+        public static bool IsAudioIrqBoostEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, PriorityControlRegistryPath, AudioIrqPriorityValueName, out int val, 0))
+            {
+                return val == 2;
+            }
+            return false;
+        }
+
+        public static void SetAudioIrqBoostEnabled(bool enabled)
+        {
+            int v = enabled ? 2 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, PriorityControlRegistryPath, AudioIrqPriorityValueName, v, RegistryValueKind.DWord);
+        }
+
+        // 8) highPrecisionTimerBtn
+        private const string HighPrecisionTimerRegPath = @"SYSTEM\CurrentControlSet\Control\Power";
+        private const string HighPrecisionTimerValueName = "CoalescingTimerInterval";
+
+        public static bool IsHighPrecisionTimerEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, HighPrecisionTimerRegPath, HighPrecisionTimerValueName, out int val, 0))
+            {
+                return val == 1;
+            }
+            return false;
+        }
+
+        public static void SetHighPrecisionTimerEnabled(bool enabled)
+        {
+            int v = enabled ? 1 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, HighPrecisionTimerRegPath, HighPrecisionTimerValueName, v, RegistryValueKind.DWord);
+        }
+
+        // 9) schedulerClockRateBtn
+        private const string SchedulerClockRateRegPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games";
+        private const string SchedulerClockRateValueName = "Clock Rate";
+
+        public static bool IsSchedulerClockRateEnabled()
+        {
+            if (TryReadRegistryValue<int>(RegistryHive.LocalMachine, SchedulerClockRateRegPath, SchedulerClockRateValueName, out int val, 0))
+            {
+                return val == 10000;
+            }
+            return false;
+        }
+
+        public static void SetSchedulerClockRateEnabled(bool enabled)
+        {
+            int v = enabled ? 10000 : 0;
+            WriteRegistryValue(RegistryHive.LocalMachine, SchedulerClockRateRegPath, SchedulerClockRateValueName, v, RegistryValueKind.DWord);
+        }
+
         // -------------------------------------------------------------------
         // ------------- Additional GPU-related methods (Nvidia/AMD) --------
         // -------------------------------------------------------------------

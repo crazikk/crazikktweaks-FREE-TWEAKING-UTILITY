@@ -174,6 +174,10 @@ namespace freetweaks_v1._3
                 eventProcessorBtn.Checked = SystemSettings.IsEventProcessorEnabled();
                 fairShareBtn.Checked = SystemSettings.IsFairShareEnabled();
                 coreParkingBtn.Checked = SystemSettings.IsCoreParkingEnabled();
+                clockIrqBoostBtn.Checked = SystemSettings.IsClockIrqBoostEnabled();
+                audioIrqBoostBtn.Checked = SystemSettings.IsAudioIrqBoostEnabled();
+                highPrecisionTimerBtn.Checked = SystemSettings.IsHighPrecisionTimerEnabled();
+                schedulerClockRateBtn.Checked = SystemSettings.IsSchedulerClockRateEnabled();
 
                 // ----- GPU toggles (staré už existující) -----
                 energyDriverBtn.Checked = SystemSettings.IsEnergyDriverEnabled();
@@ -513,6 +517,74 @@ namespace freetweaks_v1._3
                 coreParkingBtn.CheckedChanged += coreParkingBtn_CheckedChanged;
 
                 MessageBox.Show("Failed to change setting for CoreParking.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void clockIrqBoostBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = clockIrqBoostBtn.Checked;
+            SystemSettings.SetClockIrqBoostEnabled(desiredState);
+            bool actualState = SystemSettings.IsClockIrqBoostEnabled();
+            if (actualState != desiredState)
+            {
+                clockIrqBoostBtn.CheckedChanged -= clockIrqBoostBtn_CheckedChanged;
+                clockIrqBoostBtn.Checked = actualState;
+                clockIrqBoostBtn.CheckedChanged += clockIrqBoostBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Clock IRQ Boost.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void audioIrqBoostBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = audioIrqBoostBtn.Checked;
+            SystemSettings.SetAudioIrqBoostEnabled(desiredState);
+            bool actualState = SystemSettings.IsAudioIrqBoostEnabled();
+            if (actualState != desiredState)
+            {
+                audioIrqBoostBtn.CheckedChanged -= audioIrqBoostBtn_CheckedChanged;
+                audioIrqBoostBtn.Checked = actualState;
+                audioIrqBoostBtn.CheckedChanged += audioIrqBoostBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Audio IRQ Boost.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void highPrecisionTimerBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = highPrecisionTimerBtn.Checked;
+            SystemSettings.SetHighPrecisionTimerEnabled(desiredState);
+            bool actualState = SystemSettings.IsHighPrecisionTimerEnabled();
+            if (actualState != desiredState)
+            {
+                highPrecisionTimerBtn.CheckedChanged -= highPrecisionTimerBtn_CheckedChanged;
+                highPrecisionTimerBtn.Checked = actualState;
+                highPrecisionTimerBtn.CheckedChanged += highPrecisionTimerBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for High-Precision Timer.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void schedulerClockRateBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializingSettings) return;
+            bool desiredState = schedulerClockRateBtn.Checked;
+            SystemSettings.SetSchedulerClockRateEnabled(desiredState);
+            bool actualState = SystemSettings.IsSchedulerClockRateEnabled();
+            if (actualState != desiredState)
+            {
+                schedulerClockRateBtn.CheckedChanged -= schedulerClockRateBtn_CheckedChanged;
+                schedulerClockRateBtn.Checked = actualState;
+                schedulerClockRateBtn.CheckedChanged += schedulerClockRateBtn_CheckedChanged;
+
+                MessageBox.Show("Failed to change setting for Scheduler Clock Rate.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
